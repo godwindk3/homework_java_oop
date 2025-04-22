@@ -1,0 +1,11 @@
+cos(pi/3) ≈ 0.5000000000000001
+Math.cos(pi/3) = 0.5000000000000001
+exp(1) ≈ 2.7182818284590455
+Math.exp(1) = 2.718281828459045
+Base 16 to base 10: toDecimal("1A", 16): 26
+Base 10 to base 8: decimalTo("42", 8): 52
+Base 8 to base 2: toRadix("77", 8, 2): 111111
+Base 16 to base 2: toRadix("1A", 16, 2): 11010
+e^2.2 * cos(3.3) = -8.912018253842406
+Math.exp(2.2) * Math.cos(3.3) = -8.912018253845606
+Base 13 to base 8: 1063437442305267075026
