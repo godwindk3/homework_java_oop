@@ -1,4 +1,4 @@
-package hus.oop.lab10.adapter;
+package hus.oop.lab10.adapter.demonstrate_pseudocode;
 
 class RoundPeg {
     private double radius;

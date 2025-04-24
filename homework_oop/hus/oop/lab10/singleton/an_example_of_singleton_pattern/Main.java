@@ -1,4 +1,4 @@
-package hus.oop.lab10.singleton.an_example_of_singleton;
+package hus.oop.lab10.singleton.an_example_of_singleton_pattern;
 
 public class Main {
     public static void main(String[] args) {
