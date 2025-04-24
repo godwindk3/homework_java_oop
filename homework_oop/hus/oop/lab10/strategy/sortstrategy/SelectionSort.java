@@ -1,6 +1,6 @@
 package hus.oop.lab10.strategy.sortstrategy;
 
-public class SelectionSort implements ISort{
+public class SelectionSort implements ISort {
 
     @Override
     public void sort(int[] array) {

@@ -18,6 +18,7 @@ public class ChocolateBoiler {
         System.out.println("Returning instance of Chocolate Boiler");
         return uniqueInstance;
     }
+
     public void fill() {
         if (isEmpty()) {
             empty = false;

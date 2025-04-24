@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         RoundPlug myDevice;
 
-        SquarePlug squarePlug = new SquarePlug();
+        SquarePlug squarePlug = new SquarePlug(); // don't have connectRound() method
 
         myDevice = new SquareToRoundAdapter(squarePlug);
 

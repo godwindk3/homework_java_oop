@@ -17,11 +17,11 @@ public class CreditCard {
         return amount;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }

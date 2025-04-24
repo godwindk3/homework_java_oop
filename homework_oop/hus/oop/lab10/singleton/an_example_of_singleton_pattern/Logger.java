@@ -13,6 +13,7 @@ public class Logger {
         }
         return instance;
     }
+
     public void log(String message) {
         System.out.println("Log: " + message);
     }

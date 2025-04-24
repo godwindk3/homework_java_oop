@@ -6,6 +6,7 @@ public class Context {
     public void setStrategy(GreetingStrategy strategy) {
         this.strategy = strategy;
     }
+
     public void greet() {
         if (strategy != null) {
             strategy.greet();

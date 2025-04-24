@@ -1,6 +1,6 @@
 package hus.oop.lab10.strategy.sortstrategy;
 
-public class BubbleSort implements ISort{
+public class BubbleSort implements ISort {
 
     @Override
     public void sort(int[] array) {
