@@ -26,6 +26,8 @@ public class RunlengthEncoding {
     /*
      * Hàm mã hóa chuỗi ký tự text theo mã hóa run-length.
      */
+
+    // 2 hàm encoding và decoding được em tham khảo tại:  https://www.baeldung.com/java-rle-compression
     public static String encoding(String text) {
         /* TODO */
         StringBuilder result = new StringBuilder();
