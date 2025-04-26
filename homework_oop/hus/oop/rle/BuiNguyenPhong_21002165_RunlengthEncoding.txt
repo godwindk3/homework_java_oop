@@ -1,0 +1,4 @@
+Decoded text: aaaaabcccaa
+Encoded text: 5a1b3c2a
+Encoded text: 3e4f2e
+Decoded text: eeeffffee
