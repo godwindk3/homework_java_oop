@@ -17,7 +17,8 @@ public class TestDataStructure {
         */
 //        testLinkedListQueue();
 //        testArrayQueue();
-        testLinkedListStack();
+//        testLinkedListStack();
+        testArrayStack();
     }
 
     public static void testArrayStack() {
@@ -27,6 +28,24 @@ public class TestDataStructure {
             + In ra các phần tử trong stack.
             + Lần lượt xóa các phần tử trong stack. Sau mỗi lần xóa, in ra các phần tử còn lại trong stack.
          */
+        Random r = new Random();
+        int n = r.nextInt(20, 30);
+
+        MyArrayStack arrayStack = new MyArrayStack();
+
+
+        for (int i = 0; i < n; i++) {
+            arrayStack.push(r.nextInt(20, 30));
+        }
+        System.out.println("My original stack: ");
+        arrayStack.printArrayStack();
+
+        System.out.println("Pop all element: ");
+        for (int i = 0; i < n; i++) {
+            arrayStack.pop();
+            arrayStack.printArrayStack();
+        }
+
     }
 
     public static void testLinkedListStack() {
@@ -51,7 +70,6 @@ public class TestDataStructure {
             linkedListStack.pop();
             System.out.println(linkedListStack.toString());
         }
-
 
     }
 
