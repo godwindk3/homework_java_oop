@@ -1,8 +1,9 @@
 package hus.oop.datastructure;
 
+import java.util.Random;
+
 public class TestDataStructure {
     public static void main(String[] args) {
-        System.out.println("bruhhhhhhhhhh");
         /* TODO
         Yêu cầu:
 
@@ -14,7 +15,8 @@ public class TestDataStructure {
           <TenSinhVien_MaSinhVien_DataStructure>.zip (Ví dụ, NguyenVanA_123456_DataStructure.zip),
           nộp lên classroom.
         */
-
+//        testLinkedListQueue();
+        testArrayQueue();
     }
 
     public static void testArrayStack() {
@@ -42,6 +44,25 @@ public class TestDataStructure {
             + In ra các phần tử trong queue.
             + Lần lượt xóa các phần tử trong queue. Sau mỗi lần xóa, in ra các phần tử còn lại trong queue.
          */
+
+        Random r = new Random();
+
+        int n = r.nextInt(20, 30);
+
+        MyArrayQueue arrayQueue = new MyArrayQueue(n);
+
+        for (int i = 0; i < n; i++) {
+            arrayQueue.enqueue(r.nextInt(20, 30));
+        }
+
+        arrayQueue.printArrayQueue();
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Peek: " + arrayQueue.peek());
+            System.out.println("Remove element: " + arrayQueue.dequeue());
+            arrayQueue.printArrayQueue();
+        }
+
     }
 
     public static void testLinkedListQueue() {
@@ -51,5 +72,36 @@ public class TestDataStructure {
             + In ra các phần tử trong queue.
             + Lần lượt xóa các phần tử trong queue. Sau mỗi lần xóa, in ra các phần tử còn lại trong queue.
          */
+
+        MyLinkedListQueue q = new MyLinkedListQueue();
+        Random r = new Random();
+
+        int n = r.nextInt(20, 30);
+        System.out.println(n);
+
+        for (int i = 1; i <= n; i++) {
+            q.enqueue(r.nextInt(20, 30));
+        }
+
+        q.printQueue();
+
+        for (int i = 1; i <= n; i++) {
+            q.dequeue();
+            q.printQueue();
+        }
+
+
+//        q.enqueue(10);
+//        q.enqueue(20);
+//
+//        q.printQueue();
+//
+//        q.dequeue();
+//        q.dequeue();
+//        q.enqueue(30);
+//        q.enqueue(40);
+//        q.enqueue(50);
+//        q.printQueue();
+//        System.out.println("Front item is: " + q.peek());
     }
 }
