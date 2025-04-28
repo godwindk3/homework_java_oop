@@ -1,0 +1,5 @@
+package hus.oop.midterm_2023.students;
+
+public interface StudentComparable {
+    int compareTo(Student another);
+}
