@@ -1,4 +1,4 @@
-package hus.oop.midterm_2023.students;
+package hus.oop.midterm_2023_good_code.students;
 
 public class MyLinkedList extends MyAbstractList {
     private MyLinkedListNode head;
@@ -9,8 +9,8 @@ public class MyLinkedList extends MyAbstractList {
      */
     public MyLinkedList() {
         /* TODO */
-        head = null;
-        size = 0;
+        this.head = null;
+        this.size = 0;
     }
 
     /**
@@ -33,8 +33,8 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public Object get(int index) {
         /* TODO */
-        Object element = getNodeByIndex(index).getPayload();
-        return element;
+        checkIndex(index);
+        return getNodeByIndex(index).getPayload();
     }
 
     /**
@@ -46,24 +46,18 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public void set(Object payload, int index) {
         /* TODO */
-//        MyLinkedListNode current = getNodeByIndex(index);
-//        if (current != null) {
-//            current.setPayload(payload);
-//        }
-
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Invalid index: " + index);
-        }
-
-        MyLinkedListNode current = getNodeByIndex(index - 1);
-
+        checkIndex(index);
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
+        MyLinkedListNode current = head;
         if (index == 0) {
-            head = new MyLinkedListNode(payload, head.getNext());
-//            if head null:
-//            head = new MyLinkedListNode(payload, null);
-//            size++;
+            newNode.setNext(head.getNext());
+            head = newNode;
         } else {
-            current.setNext(new MyLinkedListNode(payload, current.getNext().getNext()));
+            for (int i = 0; i < index - 1; i++) {
+                current = current.getNext();
+            }
+            newNode.setNext(current.getNext().getNext());
+            current.setNext(newNode);
         }
     }
 
@@ -75,11 +69,12 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public void remove(int index) {
         /* TODO */
-        MyLinkedListNode current = getNodeByIndex(index - 1);
-        if (index == size - 1) {
-            current.setNext(null);
+        checkIndex(index);
+        if (index == 0) {
+            head = head.getNext();
         } else {
-            current.setNext(current.getNext().getNext());
+            MyLinkedListNode prev = getNodeByIndex(index - 1);
+            prev.setNext(prev.getNext().getNext());
         }
         size--;
     }
@@ -92,7 +87,17 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public void append(Object payload) {
         /* TODO */
-        insert(payload, size);
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
+        if (head == null) {
+            head = newNode;
+        } else {
+            MyLinkedListNode current = head;
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(newNode);
+        }
+        size++;
     }
 
     /**
@@ -104,11 +109,18 @@ public class MyLinkedList extends MyAbstractList {
     @Override
     public void insert(Object payload, int index) {
         /* TODO */
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Invalid index " + index);
+        }
+
+        MyLinkedListNode newNode = new MyLinkedListNode(payload);
         if (index == 0) {
-            head = new MyLinkedListNode(payload, head);
+            newNode.setNext(head);
+            head = newNode;
         } else {
-            MyLinkedListNode current = getNodeByIndex(index - 1);
-            current.setNext(new MyLinkedListNode(payload, current.getNext()));
+            MyLinkedListNode prev = getNodeByIndex(index - 1);
+            newNode.setNext(prev.getNext());
+            prev.setNext(newNode);
         }
         size++;
     }
@@ -130,16 +142,19 @@ public class MyLinkedList extends MyAbstractList {
      * @param index
      * @return
      */
-
     private MyLinkedListNode getNodeByIndex(int index) {
-        if (index >= size) {
-            throw new IndexOutOfBoundsException("Index out of bounds");
-        }
-
+        /* TODO */
+        checkIndex(index);
         MyLinkedListNode current = head;
         for (int i = 0; i < index; i++) {
             current = current.getNext();
         }
         return current;
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
     }
 }
