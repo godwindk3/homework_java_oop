@@ -1,4 +1,4 @@
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 public class MyArrayQueue implements MyQueue {
     public static final int MAX_SIZE = Integer.MAX_VALUE - 8;
@@ -68,7 +68,7 @@ public class MyArrayQueue implements MyQueue {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 import java.util.Arrays;
 
@@ -125,7 +125,7 @@ public class MyArrayStack implements MyStack {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 public class MyLinkedListQueue implements MyQueue {
     private Node head;
@@ -172,7 +172,7 @@ public class MyLinkedListQueue implements MyQueue {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 public class MyLinkedListStack implements MyStack {
     private Node top;
@@ -210,7 +210,7 @@ public class MyLinkedListStack implements MyStack {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 public interface MyQueue {
     void enqueue(int element);
@@ -221,7 +221,7 @@ public interface MyQueue {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 public interface MyStack {
     void push(int element);
@@ -232,7 +232,7 @@ public interface MyStack {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 public class Node {
     public int data;
@@ -245,7 +245,7 @@ public class Node {
 
 // -----------------------------------------------
 
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 import java.util.ArrayList;
 import java.util.List;

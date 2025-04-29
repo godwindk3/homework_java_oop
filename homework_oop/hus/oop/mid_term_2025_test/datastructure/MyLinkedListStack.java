@@ -1,4 +1,4 @@
-package hus.oop.datastructure;
+package hus.oop.mid_term_2025_test.datastructure;
 
 /**
  * Stack sử dụng cấu trúc dữ liệu linked list.

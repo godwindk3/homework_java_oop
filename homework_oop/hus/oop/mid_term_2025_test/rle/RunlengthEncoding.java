@@ -1,4 +1,4 @@
-package hus.oop.rle;
+package hus.oop.mid_term_2025_test.rle;
 
 import java.util.Collections;
 
