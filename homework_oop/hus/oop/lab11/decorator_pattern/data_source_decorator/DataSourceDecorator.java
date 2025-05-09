@@ -1,6 +1,6 @@
 package hus.oop.lab11.decorator_pattern.data_source_decorator;
 
-public class DataSourceDecorator implements DataSource{
+public class DataSourceDecorator implements DataSource {
     private DataSource wrappee;
 
     public DataSourceDecorator(DataSource wrappee) {

@@ -10,7 +10,7 @@ public class FruitFactory {
         } else if (type.equalsIgnoreCase("apple")) {
             return new Apple();
         } else {
-            throw  new IllegalArgumentException("Unknown fruit");
+            throw new IllegalArgumentException("Unknown fruit");
         }
 
     }

@@ -1,6 +1,6 @@
 package hus.oop.lab11.factory_method.fruit;
 
-public class Orange implements Fruit{
+public class Orange implements Fruit {
 
     @Override
     public void produceJuice() {

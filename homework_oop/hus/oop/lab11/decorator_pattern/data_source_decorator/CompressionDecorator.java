@@ -1,6 +1,6 @@
 package hus.oop.lab11.decorator_pattern.data_source_decorator;
 
-public class CompressionDecorator extends DataSourceDecorator{
+public class CompressionDecorator extends DataSourceDecorator {
 
     public CompressionDecorator(DataSource wrappee) {
         super(wrappee);

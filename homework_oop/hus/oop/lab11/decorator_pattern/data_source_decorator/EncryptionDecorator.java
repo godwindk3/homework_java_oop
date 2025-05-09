@@ -1,6 +1,6 @@
 package hus.oop.lab11.decorator_pattern.data_source_decorator;
 
-public class EncryptionDecorator extends DataSourceDecorator{
+public class EncryptionDecorator extends DataSourceDecorator {
 
     public EncryptionDecorator(DataSource wrappee) {
         super(wrappee);

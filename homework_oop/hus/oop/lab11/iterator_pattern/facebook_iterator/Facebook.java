@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Facebook implements SocialNetwork{
+public class Facebook implements SocialNetwork {
     private Map<String, List<Profile>> friendsMap = new HashMap<>();
     private Map<String, List<Profile>> coworkersMap = new HashMap<>();
 

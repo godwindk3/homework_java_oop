@@ -1,6 +1,6 @@
 package hus.oop.lab11.factory_method.example;
 
-public class Coffee implements Drink{
+public class Coffee implements Drink {
 
     @Override
     public void serve() {

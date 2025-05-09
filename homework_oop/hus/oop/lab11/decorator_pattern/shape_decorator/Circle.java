@@ -1,6 +1,6 @@
 package hus.oop.lab11.decorator_pattern.shape_decorator;
 
-public class Circle implements Shape{
+public class Circle implements Shape {
 
     @Override
     public void draw() {

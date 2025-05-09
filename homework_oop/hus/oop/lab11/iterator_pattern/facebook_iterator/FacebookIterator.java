@@ -2,7 +2,7 @@ package hus.oop.lab11.iterator_pattern.facebook_iterator;
 
 import java.util.List;
 
-public class FacebookIterator implements ProfileIterator{
+public class FacebookIterator implements ProfileIterator {
     private Facebook facebook;
     private String profileId, type;
 
