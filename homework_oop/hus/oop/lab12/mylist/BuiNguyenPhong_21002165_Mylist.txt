@@ -1,0 +1,13 @@
+Testing MyArrayList:
+ArrayList: [1.5][2.7][3.2][0.8]
+Max: 3.2
+Min: 0.8
+Mean: 2.0500000000000003
+Variance: 0.9025000000000001
+
+Testing MyLinkedList:
+LinkedList: [1.5][2.7][3.2][0.8]
+Max: 3.2
+Min: 0.8
+Mean: 2.0500000000000003
+Variance: 0.9025000000000001
