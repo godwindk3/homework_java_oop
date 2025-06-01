@@ -7,9 +7,9 @@ public class MyMath {
         double term = x;
         int n = 1;
 
-        // Chuẩn hóa x về khoảng [-π, π]
-        while (x > Math.PI) x -= 2 * Math.PI;
-        while (x < -Math.PI) x += 2 * Math.PI;
+//        // Chuẩn hóa x về khoảng [-π, π]
+//        while (x > Math.PI) x -= 2 * Math.PI;
+//        while (x < -Math.PI) x += 2 * Math.PI;
 
         term = x;
         for (int i = 0; i < 20; i++) {
@@ -28,9 +28,9 @@ public class MyMath {
         double term = 1;
         int n = 1;
 
-        // Chuẩn hóa x về khoảng [-π, π]
-        while (x > Math.PI) x -= 2 * Math.PI;
-        while (x < -Math.PI) x += 2 * Math.PI;
+//        // Chuẩn hóa x về khoảng [-π, π]
+//        while (x > Math.PI) x -= 2 * Math.PI;
+//        while (x < -Math.PI) x += 2 * Math.PI;
 
         for (int i = 0; i < 20; i++) {
             result += term;
