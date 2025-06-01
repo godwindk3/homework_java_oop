@@ -25,39 +25,17 @@ public class BisectionSolver implements RootSolver {
     @Override
     public double solve(AbstractFunction function, double lower, double upper) {
         /* TODO */
-        double fLower = function.evaluate(lower);
-        double fUpper = function.evaluate(upper);
-
-        if (fLower * fUpper > 0) {
-            throw new IllegalArgumentException(
-                    "BisectionSolver: f(lower) và f(upper) phải khác dấu để đảm bảo có nghiệm trong khoảng."
-            );
+        double a = lower;
+        double b = upper;
+        double c = a;
+        for (int i = 0; i < maxIterations; i++) {
+            c = (a + b) / 2;
+            double f_c = function.evaluate(c);
+            if (Math.abs(f_c) < tolerance || Math.abs(b - a) < tolerance)
+                return c;
+            if (f_c * function.evaluate(a) < 0) b = c;
+            else a = c;
         }
-
-        double mid = lower;
-        double fMid;
-        int iter = 0;
-        while (iter < maxIterations) {
-            mid = 0.5 * (lower + upper);
-            fMid = function.evaluate(mid);
-
-            if (Math.abs(fMid) < tolerance || (upper - lower) / 2.0 < tolerance) {
-                return mid;
-            }
-
-            // Chọn nửa khoảng chứa nghiệm
-            if (fLower * fMid <= 0) {
-                upper = mid;
-                fUpper = fMid;
-            } else {
-                lower = mid;
-                fLower = fMid;
-            }
-
-            iter++;
-        }
-
-        // Sau tối đa iter vẫn chưa đủ điều kiện, trả về mid gần đúng cuối cùng
-        return mid;
+        return c;
     }
 }

@@ -22,55 +22,24 @@ public class TestRootFinding {
            UnivariateRealRootFinding. Các phương pháp tìm nghiệm có thể thay đổi ở thời gian chạy chương trình.
          - In ra phương pháp sử dụng, hàm và nghiệm tìm được trong khoảng [a, b] đã cho.
          */
-        try {
-            PrintWriter writer = new PrintWriter("BuiNguyenPhong_21002165_RootSolver.txt", "UTF-8");
-            AbstractFunction function = new UnivariateRealFunction();
-            UnivariateRealRootFinding rootFinding = new UnivariateRealRootFinding(function);
-            double lower = 0.0; // Mở rộng khoảng để đổi dấu
-            double upper = 5.0;
-            double tolerance = 1.0E-6;
-            int maxIterations = 100;
+        AbstractFunction f = new UnivariateRealFunction();
 
-            // Test Bisection
-            writer.println("=== Phương pháp Bisection ===");
-            rootFinding.setRootSolver(new BisectionSolver(tolerance, maxIterations));
-            try {
-                double root = rootFinding.solve(lower, upper);
-                writer.println("Hàm: f(x) = x * sin(x) - 3");
-                writer.println("Nghiệm: x = " + root);
-                writer.println("Giá trị hàm tại nghiệm: f(" + root + ") = " + function.evaluate(root));
-            } catch (Exception e) {
-                writer.println("Lỗi: " + e.getMessage());
-            }
+        RootSolver[] solvers = new RootSolver[] {
+                new BisectionSolver(1e-8, 100),
+                new NewtonRaphsonSolver(1e-8, 100),
+                new SecantSolver(1e-8, 100)
+        };
 
-            // Test Newton-Raphson
-            writer.println("\n=== Phương pháp Newton-Raphson ===");
-            rootFinding.setRootSolver(new NewtonRaphsonSolver(tolerance, maxIterations));
-            try {
-                double root = rootFinding.solve(lower, upper);
-                writer.println("Hàm: f(x) = x * sin(x) - 3");
-                writer.println("Nghiệm: x = " + root);
-                writer.println("Giá trị hàm tại nghiệm: f(" + root + ") = " + function.evaluate(root));
-                writer.println("Giá trị đạo hàm tại nghiệm: f'(" + root + ") = " + function.derivative(root));
-            } catch (Exception e) {
-                writer.println("Lỗi: " + e.getMessage());
-            }
+        String[] solverNames = {"Bisection", "Newton-Raphson", "Secant"};
 
-            // Test Secant
-            writer.println("\n=== Phương pháp Secant ===");
-            rootFinding.setRootSolver(new SecantSolver(tolerance, maxIterations));
-            try {
-                double root = rootFinding.solve(lower, upper);
-                writer.println("Hàm: f(x) = x * sin(x) - 3");
-                writer.println("Nghiệm: x = " + root);
-                writer.println("Giá trị hàm tại nghiệm: f(" + root + ") = " + function.evaluate(root));
-            } catch (Exception e) {
-                writer.println("Lỗi: " + e.getMessage());
-            }
+        double lower = 6;
+        double upper = 7;
 
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
+        for (int i = 0; i < solvers.length; i++) {
+            UnivariateRealRootFinding finder = new UnivariateRealRootFinding(f, solvers[i]);
+            double root = finder.solve(lower, upper);
+            System.out.printf("Method: %s, Root of sin(x)*x - 3 in [%.2f, %.2f] = %.10f%n",
+                    solverNames[i], lower, upper, root);
         }
     }
 }

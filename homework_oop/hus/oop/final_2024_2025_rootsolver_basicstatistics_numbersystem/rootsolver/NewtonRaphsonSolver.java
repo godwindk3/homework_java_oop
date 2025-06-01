@@ -26,32 +26,15 @@ public class NewtonRaphsonSolver implements RootSolver {
     public double solve(AbstractFunction function, double lower, double upper) {
         /* TODO */
         // Chọn điểm khởi đầu là midpoint của [lower, upper]
-        double x = 0.5 * (lower + upper);
-        double fx, fpx;
-
-        for (int iter = 0; iter < maxIterations; iter++) {
-            fx = function.evaluate(x);
-            fpx = function.derivative(x);
-
-            if (Math.abs(fpx) < 1e-15) {
-                // Tránh chia cho 0, thoát vòng lặp
-                break;
-            }
-
-            double xNew = x - fx / fpx;
-
-            if (Double.isNaN(xNew) || Double.isInfinite(xNew)) {
-                // Nếu tính ra NaN / Infinite thì thoát
-                break;
-            }
-
-            if (Math.abs(function.evaluate(xNew)) < tolerance || Math.abs(xNew - x) < tolerance) {
-                return xNew;
-            }
-            x = xNew;
+        double x = (lower + upper) / 2;
+        for (int i = 0; i < maxIterations; i++) {
+            double f_x = function.evaluate(x);
+            double df_x = function.derivative(x);
+            if (Math.abs(df_x) < 1e-15) break;
+            double x_new = x - f_x / df_x;
+            if (Math.abs(x_new - x) < tolerance) return x_new;
+            x = x_new;
         }
-
-        // Nếu không hội tụ đủ thì trả về giá trị cuối cùng
         return x;
     }
 }
