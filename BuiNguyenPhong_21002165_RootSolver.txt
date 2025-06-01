@@ -1,0 +1,13 @@
+=== Phương pháp Bisection ===
+Lỗi: BisectionSolver: f(lower) và f(upper) phải khác dấu để đảm bảo có nghiệm trong khoảng.
+
+=== Phương pháp Newton-Raphson ===
+Hàm: f(x) = x * sin(x) - 3
+Nghiệm: x = -6.744168353117208
+Giá trị hàm tại nghiệm: f(-6.744168353117208) = -9.204872419843468E-10
+Giá trị đạo hàm tại nghiệm: f'(-6.744168353117208) = -6.485011430840004
+
+=== Phương pháp Secant ===
+Hàm: f(x) = x * sin(x) - 3
+Nghiệm: x = -6.7441683525404335
+Giá trị hàm tại nghiệm: f(-6.7441683525404335) = -4.660874353135114E-9
