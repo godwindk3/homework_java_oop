@@ -1,0 +1,11 @@
+Phương pháp: Bisection
+Lỗi: Hàm không đổi dấu trên [lower, upper]
+
+Phương pháp: Newton-Raphson
+Hàm: sin(x)*x - 3
+Nghiệm: -6.744168353117208
+
+Phương pháp: Secant
+Hàm: sin(x)*x - 3
+Nghiệm: -6.744168352540434
+
