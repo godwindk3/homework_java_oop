@@ -1,0 +1,184 @@
+===== ORIGINAL STUDENT LIST =====
+20001878, Nguyễn Trường An, 2002, Toán: 7.00, Lý: 8.00, Hóa: 7.50, TB: 7.50
+20001879, Nguyễn Văn An, 2004, Toán: 5.50, Lý: 6.50, Hóa: 8.00, TB: 6.67
+20001881, Đồng Đức Anh, 2003, Toán: 4.50, Lý: 9.00, Hóa: 5.50, TB: 6.33
+20001889, Vũ Hải Anh, 2002, Toán: 7.50, Lý: 8.00, Hóa: 9.50, TB: 8.33
+20001880, Chu Hoàng Anh, 2006, Toán: 9.50, Lý: 6.00, Hóa: 8.00, TB: 7.83
+20001887, Phạm Hùng Anh, 2004, Toán: 7.50, Lý: 9.50, Hóa: 10.00, TB: 9.00
+20001888, Phùng Thị Mai Anh, 2001, Toán: 5.50, Lý: 8.50, Hóa: 5.00, TB: 6.33
+20001885, Nguyễn Thục Anh, 2007, Toán: 9.00, Lý: 4.50, Hóa: 8.50, TB: 7.33
+20001883, Lê Tuyết Anh, 2003, Toán: 6.50, Lý: 9.50, Hóa: 5.50, TB: 7.17
+20001882, Hoàng Thị Vân Anh, 2002, Toán: 8.50, Lý: 9.50, Hóa: 9.50, TB: 9.17
+20001884, Nguyễn Bá Việt Anh, 2001, Toán: 6.00, Lý: 9.50, Hóa: 7.00, TB: 7.50
+20001886, Phạm Dương Việt Anh, 2007, Toán: 9.00, Lý: 7.50, Hóa: 9.00, TB: 8.50
+20001890, Trần Thanh Bình, 2003, Toán: 4.50, Lý: 8.00, Hóa: 6.00, TB: 6.17
+20001892, Nguyễn Duy Chiến, 2007, Toán: 9.50, Lý: 8.00, Hóa: 7.00, TB: 8.17
+20001893, Nguyễn Đức Chính, 2008, Toán: 9.00, Lý: 6.00, Hóa: 8.00, TB: 7.67
+20000166, Nguyễn Như Cường, 2003, Toán: 9.50, Lý: 9.50, Hóa: 10.00, TB: 9.67
+20001894, Thân Lê Quang Cường, 2004, Toán: 9.00, Lý: 7.50, Hóa: 6.00, TB: 7.50
+20001895, Lê Thị Thuỳ Dung, 2002, Toán: 8.50, Lý: 7.00, Hóa: 9.00, TB: 8.17
+20001896, Nguyễn Quang Dũng, 2006, Toán: 5.50, Lý: 8.00, Hóa: 7.00, TB: 6.83
+20001897, Phùng Văn Dũng, 2006, Toán: 9.50, Lý: 5.00, Hóa: 8.00, TB: 7.50
+20001898, Bùi Khánh Duy, 2003, Toán: 9.00, Lý: 6.00, Hóa: 8.50, TB: 7.83
+20001899, Bùi Đăng Dương, 2002, Toán: 5.50, Lý: 6.00, Hóa: 4.50, TB: 5.33
+20001900, Nguyễn Văn Hải Dương, 2001, Toán: 8.00, Lý: 7.50, Hóa: 9.50, TB: 8.33
+20001903, Nguyễn Quốc Đạt, 2007, Toán: 9.00, Lý: 9.50, Hóa: 6.00, TB: 8.17
+20001902, Lâm Sơn Đạt, 2003, Toán: 5.50, Lý: 10.00, Hóa: 4.00, TB: 6.50
+20001901, Đỗ Tiến Đạt, 2002, Toán: 7.50, Lý: 5.50, Hóa: 7.00, TB: 6.67
+20001904, Vi Văn Đô, 2001, Toán: 9.00, Lý: 7.50, Hóa: 4.00, TB: 6.83
+20001905, Nguyễn Văn Đồng, 2000, Toán: 6.50, Lý: 9.50, Hóa: 7.00, TB: 7.67
+20001906, Đỗ Anh Đức, 2005, Toán: 8.50, Lý: 4.50, Hóa: 9.00, TB: 7.33
+20001907, Lương Đình Đức, 2003, Toán: 8.00, Lý: 8.50, Hóa: 10.00, TB: 8.83
+20001909, Phạm Minh Đức, 2004, Toán: 4.50, Lý: 6.50, Hóa: 5.00, TB: 5.33
+20000115, Vũ Trường Giang, 2002, Toán: 3.50, Lý: 9.00, Hóa: 7.50, TB: 6.67
+20001911, Trần Ngọc Hải, 2002, Toán: 2.50, Lý: 8.00, Hóa: 9.50, TB: 6.67
+20001910, Nguyễn Văn Hải, 2003, Toán: 8.00, Lý: 5.00, Hóa: 4.50, TB: 5.83
+20001912, Trần Tiến Hảo, 2001, Toán: 1.50, Lý: 9.00, Hóa: 6.50, TB: 5.67
+20001913, Ngô Thị Thu Hằng, 2006, Toán: 4.00, Lý: 4.00, Hóa: 8.50, TB: 5.50
+20001914, Nguyễn Thị Thu Hiền, 2002, Toán: 6.00, Lý: 2.00, Hóa: 9.00, TB: 5.67
+20001917, Đỗ Minh Hiếu, 2002, Toán: 8.00, Lý: 5.00, Hóa: 4.00, TB: 5.67
+20001918, Lê Minh Hiếu, 2007, Toán: 7.50, Lý: 10.00, Hóa: 5.00, TB: 7.50
+20000368, Đỗ Tràng Hiếu, 2003, Toán: 9.00, Lý: 6.00, Hóa: 1.00, TB: 5.33
+20001916, Bùi Trung Hiếu, 2003, Toán: 8.50, Lý: 7.50, Hóa: 6.00, TB: 7.33
+20001920, Phan Xuân Hiếu, 2001, Toán: 6.50, Lý: 9.50, Hóa: 4.00, TB: 6.67
+20001921, Nguyễn Văn Hòa, 2002, Toán: 7.00, Lý: 4.00, Hóa: 6.00, TB: 5.67
+20001922, Mạc Duy Hoan, 2002, Toán: 4.50, Lý: 3.00, Hóa: 3.00, TB: 3.50
+20001923, Lê Việt Hoàng, 2005, Toán: 9.50, Lý: 9.00, Hóa: 7.00, TB: 8.50
+20000223, Lê Việt Hoàng, 2007, Toán: 10.00, Lý: 5.00, Hóa: 4.00, TB: 6.33
+20001924, Đào Quốc Hội, 2003, Toán: 8.50, Lý: 6.00, Hóa: 2.00, TB: 5.50
+20001925, Vũ Tiến Hùng, 1999, Toán: 4.50, Lý: 4.00, Hóa: 9.00, TB: 5.83
+20001926, Lưu Hiểu Huy, 2002, Toán: 9.00, Lý: 7.00, Hóa: 4.00, TB: 6.67
+20001878, Nguyễn Trường An, 2002, Toán: 7.00, Lý: 8.00, Hóa: 7.50, TB: 7.50
+20001879, Nguyễn Văn An, 2004, Toán: 5.50, Lý: 6.50, Hóa: 8.00, TB: 6.67
+20001881, Đồng Đức Anh, 2003, Toán: 4.50, Lý: 9.00, Hóa: 5.50, TB: 6.33
+20001889, Vũ Hải Anh, 2002, Toán: 7.50, Lý: 8.00, Hóa: 9.50, TB: 8.33
+20001880, Chu Hoàng Anh, 2006, Toán: 9.50, Lý: 6.00, Hóa: 8.00, TB: 7.83
+20001887, Phạm Hùng Anh, 2004, Toán: 7.50, Lý: 9.50, Hóa: 10.00, TB: 9.00
+20001888, Phùng Thị Mai Anh, 2001, Toán: 5.50, Lý: 8.50, Hóa: 5.00, TB: 6.33
+20001885, Nguyễn Thục Anh, 2007, Toán: 9.00, Lý: 4.50, Hóa: 8.50, TB: 7.33
+20001883, Lê Tuyết Anh, 2003, Toán: 6.50, Lý: 9.50, Hóa: 5.50, TB: 7.17
+20001882, Hoàng Thị Vân Anh, 2002, Toán: 8.50, Lý: 9.50, Hóa: 9.50, TB: 9.17
+20001884, Nguyễn Bá Việt Anh, 2001, Toán: 6.00, Lý: 9.50, Hóa: 7.00, TB: 7.50
+20001886, Phạm Dương Việt Anh, 2007, Toán: 9.00, Lý: 7.50, Hóa: 9.00, TB: 8.50
+20001890, Trần Thanh Bình, 2003, Toán: 4.50, Lý: 8.00, Hóa: 6.00, TB: 6.17
+20001892, Nguyễn Duy Chiến, 2007, Toán: 9.50, Lý: 8.00, Hóa: 7.00, TB: 8.17
+20001893, Nguyễn Đức Chính, 2008, Toán: 9.00, Lý: 6.00, Hóa: 8.00, TB: 7.67
+20000166, Nguyễn Như Cường, 2003, Toán: 9.50, Lý: 9.50, Hóa: 10.00, TB: 9.67
+20001894, Thân Lê Quang Cường, 2004, Toán: 9.00, Lý: 7.50, Hóa: 6.00, TB: 7.50
+20001895, Lê Thị Thuỳ Dung, 2002, Toán: 8.50, Lý: 7.00, Hóa: 9.00, TB: 8.17
+20001896, Nguyễn Quang Dũng, 2006, Toán: 5.50, Lý: 8.00, Hóa: 7.00, TB: 6.83
+20001897, Phùng Văn Dũng, 2006, Toán: 9.50, Lý: 5.00, Hóa: 8.00, TB: 7.50
+20001898, Bùi Khánh Duy, 2003, Toán: 9.00, Lý: 6.00, Hóa: 8.50, TB: 7.83
+20001899, Bùi Đăng Dương, 2002, Toán: 5.50, Lý: 6.00, Hóa: 4.50, TB: 5.33
+20001900, Nguyễn Văn Hải Dương, 2001, Toán: 8.00, Lý: 7.50, Hóa: 9.50, TB: 8.33
+20001903, Nguyễn Quốc Đạt, 2007, Toán: 9.00, Lý: 9.50, Hóa: 6.00, TB: 8.17
+20001902, Lâm Sơn Đạt, 2003, Toán: 5.50, Lý: 10.00, Hóa: 4.00, TB: 6.50
+20001901, Đỗ Tiến Đạt, 2002, Toán: 7.50, Lý: 5.50, Hóa: 7.00, TB: 6.67
+20001904, Vi Văn Đô, 2001, Toán: 9.00, Lý: 7.50, Hóa: 4.00, TB: 6.83
+20001905, Nguyễn Văn Đồng, 2000, Toán: 6.50, Lý: 9.50, Hóa: 7.00, TB: 7.67
+20001906, Đỗ Anh Đức, 2005, Toán: 8.50, Lý: 4.50, Hóa: 9.00, TB: 7.33
+20001907, Lương Đình Đức, 2003, Toán: 8.00, Lý: 8.50, Hóa: 10.00, TB: 8.83
+20001909, Phạm Minh Đức, 2004, Toán: 4.50, Lý: 6.50, Hóa: 5.00, TB: 5.33
+20000115, Vũ Trường Giang, 2002, Toán: 3.50, Lý: 9.00, Hóa: 7.50, TB: 6.67
+20001911, Trần Ngọc Hải, 2002, Toán: 2.50, Lý: 8.00, Hóa: 9.50, TB: 6.67
+20001910, Nguyễn Văn Hải, 2003, Toán: 8.00, Lý: 5.00, Hóa: 4.50, TB: 5.83
+20001912, Trần Tiến Hảo, 2001, Toán: 1.50, Lý: 9.00, Hóa: 6.50, TB: 5.67
+20001913, Ngô Thị Thu Hằng, 2006, Toán: 4.00, Lý: 4.00, Hóa: 8.50, TB: 5.50
+20001914, Nguyễn Thị Thu Hiền, 2002, Toán: 6.00, Lý: 2.00, Hóa: 9.00, TB: 5.67
+20001917, Đỗ Minh Hiếu, 2002, Toán: 8.00, Lý: 5.00, Hóa: 4.00, TB: 5.67
+20001918, Lê Minh Hiếu, 2007, Toán: 7.50, Lý: 10.00, Hóa: 5.00, TB: 7.50
+20000368, Đỗ Tràng Hiếu, 2003, Toán: 9.00, Lý: 6.00, Hóa: 1.00, TB: 5.33
+20001916, Bùi Trung Hiếu, 2003, Toán: 8.50, Lý: 7.50, Hóa: 6.00, TB: 7.33
+20001920, Phan Xuân Hiếu, 2001, Toán: 6.50, Lý: 9.50, Hóa: 4.00, TB: 6.67
+20001921, Nguyễn Văn Hòa, 2002, Toán: 7.00, Lý: 4.00, Hóa: 6.00, TB: 5.67
+20001922, Mạc Duy Hoan, 2002, Toán: 4.50, Lý: 3.00, Hóa: 3.00, TB: 3.50
+20001923, Lê Việt Hoàng, 2005, Toán: 9.50, Lý: 9.00, Hóa: 7.00, TB: 8.50
+20000223, Lê Việt Hoàng, 2007, Toán: 10.00, Lý: 5.00, Hóa: 4.00, TB: 6.33
+20001924, Đào Quốc Hội, 2003, Toán: 8.50, Lý: 6.00, Hóa: 2.00, TB: 5.50
+20001925, Vũ Tiến Hùng, 1999, Toán: 4.50, Lý: 4.00, Hóa: 9.00, TB: 5.83
+20001926, Lưu Hiểu Huy, 2002, Toán: 9.00, Lý: 7.00, Hóa: 4.00, TB: 6.67
+
+===== STUDENTS WITH AVERAGE > 15 =====
+
+===== STUDENTS WITH MATH > 5 =====
+20001878, Nguyễn Trường An, Toán: 7.00
+20001879, Nguyễn Văn An, Toán: 5.50
+20001889, Vũ Hải Anh, Toán: 7.50
+20001880, Chu Hoàng Anh, Toán: 9.50
+20001887, Phạm Hùng Anh, Toán: 7.50
+20001888, Phùng Thị Mai Anh, Toán: 5.50
+20001885, Nguyễn Thục Anh, Toán: 9.00
+20001883, Lê Tuyết Anh, Toán: 6.50
+20001882, Hoàng Thị Vân Anh, Toán: 8.50
+20001884, Nguyễn Bá Việt Anh, Toán: 6.00
+20001886, Phạm Dương Việt Anh, Toán: 9.00
+20001892, Nguyễn Duy Chiến, Toán: 9.50
+20001893, Nguyễn Đức Chính, Toán: 9.00
+20000166, Nguyễn Như Cường, Toán: 9.50
+20001894, Thân Lê Quang Cường, Toán: 9.00
+20001895, Lê Thị Thuỳ Dung, Toán: 8.50
+20001896, Nguyễn Quang Dũng, Toán: 5.50
+20001897, Phùng Văn Dũng, Toán: 9.50
+20001898, Bùi Khánh Duy, Toán: 9.00
+20001899, Bùi Đăng Dương, Toán: 5.50
+20001900, Nguyễn Văn Hải Dương, Toán: 8.00
+20001903, Nguyễn Quốc Đạt, Toán: 9.00
+20001902, Lâm Sơn Đạt, Toán: 5.50
+20001901, Đỗ Tiến Đạt, Toán: 7.50
+20001904, Vi Văn Đô, Toán: 9.00
+20001905, Nguyễn Văn Đồng, Toán: 6.50
+20001906, Đỗ Anh Đức, Toán: 8.50
+20001907, Lương Đình Đức, Toán: 8.00
+20001910, Nguyễn Văn Hải, Toán: 8.00
+20001914, Nguyễn Thị Thu Hiền, Toán: 6.00
+20001917, Đỗ Minh Hiếu, Toán: 8.00
+20001918, Lê Minh Hiếu, Toán: 7.50
+20000368, Đỗ Tràng Hiếu, Toán: 9.00
+20001916, Bùi Trung Hiếu, Toán: 8.50
+20001920, Phan Xuân Hiếu, Toán: 6.50
+20001921, Nguyễn Văn Hòa, Toán: 7.00
+20001923, Lê Việt Hoàng, Toán: 9.50
+20000223, Lê Việt Hoàng, Toán: 10.00
+20001924, Đào Quốc Hội, Toán: 8.50
+20001926, Lưu Hiểu Huy, Toán: 9.00
+20001878, Nguyễn Trường An, Toán: 7.00
+20001879, Nguyễn Văn An, Toán: 5.50
+20001889, Vũ Hải Anh, Toán: 7.50
+20001880, Chu Hoàng Anh, Toán: 9.50
+20001887, Phạm Hùng Anh, Toán: 7.50
+20001888, Phùng Thị Mai Anh, Toán: 5.50
+20001885, Nguyễn Thục Anh, Toán: 9.00
+20001883, Lê Tuyết Anh, Toán: 6.50
+20001882, Hoàng Thị Vân Anh, Toán: 8.50
+20001884, Nguyễn Bá Việt Anh, Toán: 6.00
+20001886, Phạm Dương Việt Anh, Toán: 9.00
+20001892, Nguyễn Duy Chiến, Toán: 9.50
+20001893, Nguyễn Đức Chính, Toán: 9.00
+20000166, Nguyễn Như Cường, Toán: 9.50
+20001894, Thân Lê Quang Cường, Toán: 9.00
+20001895, Lê Thị Thuỳ Dung, Toán: 8.50
+20001896, Nguyễn Quang Dũng, Toán: 5.50
+20001897, Phùng Văn Dũng, Toán: 9.50
+20001898, Bùi Khánh Duy, Toán: 9.00
+20001899, Bùi Đăng Dương, Toán: 5.50
+20001900, Nguyễn Văn Hải Dương, Toán: 8.00
+20001903, Nguyễn Quốc Đạt, Toán: 9.00
+20001902, Lâm Sơn Đạt, Toán: 5.50
+20001901, Đỗ Tiến Đạt, Toán: 7.50
+20001904, Vi Văn Đô, Toán: 9.00
+20001905, Nguyễn Văn Đồng, Toán: 6.50
+20001906, Đỗ Anh Đức, Toán: 8.50
+20001907, Lương Đình Đức, Toán: 8.00
+20001910, Nguyễn Văn Hải, Toán: 8.00
+20001914, Nguyễn Thị Thu Hiền, Toán: 6.00
+20001917, Đỗ Minh Hiếu, Toán: 8.00
+20001918, Lê Minh Hiếu, Toán: 7.50
+20000368, Đỗ Tràng Hiếu, Toán: 9.00
+20001916, Bùi Trung Hiếu, Toán: 8.50
+20001920, Phan Xuân Hiếu, Toán: 6.50
+20001921, Nguyễn Văn Hòa, Toán: 7.00
+20001923, Lê Việt Hoàng, Toán: 9.50
+20000223, Lê Việt Hoàng, Toán: 10.00
+20001924, Đào Quốc Hội, Toán: 8.50
+20001926, Lưu Hiểu Huy, Toán: 9.00
+
