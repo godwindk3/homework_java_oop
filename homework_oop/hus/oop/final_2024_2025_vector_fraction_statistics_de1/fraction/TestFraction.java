@@ -1,8 +1,5 @@
 package hus.oop.final_2024_2025_vector_fraction_statistics_de1.fraction;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Random;
 
 public class TestFraction {
@@ -13,97 +10,87 @@ public class TestFraction {
     }
 
     public static void main(String[] args) {
-        String TEN_SINH_VIEN = "NguyenVanA";
-        String MA_SINH_VIEN = "123456";
-        String fileName = TEN_SINH_VIEN + "_" + MA_SINH_VIEN + "_MyFractions.txt";
+        TestFraction testArray = new TestFraction(new MyArrayDataSet());
+        testArray.testMyArrayDataSet();
 
-        try (PrintWriter pw = new PrintWriter(new FileWriter(fileName))) {
-            // Chạy test cho MyArrayDataSet
-            pw.println("=== TEST MyArrayDataSet ===");
-            TestFraction testerArray = new TestFraction(new MyArrayDataSet());
-            testerArray.testMyArrayDataSet(pw);
+        TestFraction testList = new TestFraction(new MyListDataSet());
+        testList.testMyListDataSet();
 
-            pw.println();
-            // Chạy test cho MyListDataSet
-            pw.println("=== TEST MyListDataSet ===");
-            TestFraction testerList = new TestFraction(new MyListDataSet());
-            testerList.testMyListDataSet(pw);
-
-            System.out.println("Đã ghi kết quả vào file: " + fileName);
-        } catch (IOException e) {
-            System.err.println("Lỗi khi ghi file: " + e.getMessage());
-        }
+        /* TODO:
+         - Viết code cho các hàm test.
+         - Chạy chương trình và lưu kết quả chạy chương trình và file text được đặt tên
+           là <TenSinhVien_MaSinhVien_MyFractions>.txt (Ví dụ, NguyenVanA_123456_MyFractions.txt).
+         - Nén các file source code và file text kết quả chạy chương trình vào file zip có tên
+           <TenSinhVien_MaSinhVien_MyFractions>.zip (Ví dụ, NguyenVanA_123456_MyFractions.zip),
+           nộp lên classroom.
+         */
     }
 
-    public void testMyArrayDataSet(PrintWriter pw) {
-        Random rnd = new Random();
-        int numbers = rnd.nextInt(21) + 30; // sinh số tự nhiên trong [30,50]
-
-        // 2. Tạo ra numbers phân số ngẫu nhiên và lưu vào MyArrayDataSet
-        MyArrayDataSet dsArray = new MyArrayDataSet();
-        pw.println("Số lượng phân số sinh ngẫu nhiên: " + numbers);
+    public void testMyArrayDataSet() {
+        Random rand = new Random();
+        int numbers = 30 + rand.nextInt(21); // Sinh ngẫu nhiên từ 30 đến 50
+        MyArrayDataSet dataSet = new MyArrayDataSet();
         for (int i = 0; i < numbers; i++) {
-            int tu = rnd.nextInt(100) + 1; // [1,100]
-            int mau = rnd.nextInt(100) + 1; // [1,100]
-            MyFraction f = new MyFraction(tu, mau);
-            dsArray.append(f);
+            int numerator = 1 + rand.nextInt(100);
+            int denominator = 1 + rand.nextInt(100);
+            dataSet.append(new MyFraction(numerator, denominator));
         }
 
-        // In ra dữ liệu gốc
-        pw.println("Dữ liệu gốc (MyArrayDataSet): " + dsArray.myDataSetToString());
+        System.out.println("Original DataSet:");
+        dataSet.print();
 
-        // 3. Sắp xếp và in ra
-        MyArrayDataSet ascArray = dsArray.sortIncreasing();
-        pw.println("Sắp xếp tăng dần: " + ascArray.myDataSetToString());
+        MyArrayDataSet sortedIncreasing = dataSet.sortIncreasing();
+        System.out.println("Sorted Increasing:");
+        sortedIncreasing.print();
 
-        MyArrayDataSet descArray = dsArray.sortDecreasing();
-        pw.println("Sắp xếp giảm dần: " + descArray.myDataSetToString());
+        MyArrayDataSet sortedDecreasing = dataSet.sortDecreasing();
+        System.out.println("Sorted Decreasing:");
+        sortedDecreasing.print();
 
-        // 4. In ra phân số tối giản
-        MyArrayDataSet simplifiedOriginal = dsArray.toSimplify();
-        pw.println("Phân số tối giản (theo thứ tự gốc): " + simplifiedOriginal.myDataSetToString());
+        MyArrayDataSet simplified = dataSet.toSimplify();
+        System.out.println("Simplified DataSet:");
+        simplified.print();
 
-        MyArrayDataSet simplifiedAsc = simplifiedOriginal.sortIncreasing();
-        pw.println("Phân số tối giản sắp xếp tăng dần: " + simplifiedAsc.myDataSetToString());
+        MyArrayDataSet simplifiedIncreasing = simplified.sortIncreasing();
+        System.out.println("Simplified Sorted Increasing:");
+        simplifiedIncreasing.print();
 
-        MyArrayDataSet simplifiedDesc = simplifiedOriginal.sortDecreasing();
-        pw.println("Phân số tối giản sắp xếp giảm dần: " + simplifiedDesc.myDataSetToString());
+        MyArrayDataSet simplifiedDecreasing = simplified.sortDecreasing();
+        System.out.println("Simplified Sorted Decreasing:");
+        simplifiedDecreasing.print();
     }
 
-    public void testMyListDataSet(PrintWriter pw) {
-        Random rnd = new Random();
-        int numbers = rnd.nextInt(21) + 30; // sinh số tự nhiên trong [30,50]
-
-        // 2. Tạo ra numbers phân số ngẫu nhiên và lưu vào MyListDataSet
-        MyListDataSet dsList = new MyListDataSet();
-        pw.println("Số lượng phân số sinh ngẫu nhiên: " + numbers);
+    public void testMyListDataSet() {
+        Random rand = new Random();
+        int numbers = 30 + rand.nextInt(21); // Sinh ngẫu nhiên từ 30 đến 50
+        MyListDataSet dataSet = new MyListDataSet();
         for (int i = 0; i < numbers; i++) {
-            int tu = rnd.nextInt(100) + 1; // [1,100]
-            int mau = rnd.nextInt(100) + 1; // [1,100]
-            MyFraction f = new MyFraction(tu, mau);
-            dsList.append(f);
+            int numerator = 1 + rand.nextInt(100);
+            int denominator = 1 + rand.nextInt(100);
+            dataSet.append(new MyFraction(numerator, denominator));
         }
 
-        // In ra dữ liệu gốc
-        pw.println("Dữ liệu gốc (MyListDataSet): " + dsList.myDataSetToString());
+        System.out.println("Original DataSet:");
+        dataSet.print();
 
-        // 3. Sắp xếp và in ra
-        MyListDataSet ascList = dsList.sortIncreasing();
-        pw.println("Sắp xếp tăng dần: " + ascList.myDataSetToString());
+        MyListDataSet sortedIncreasing = dataSet.sortIncreasing();
+        System.out.println("Sorted Increasing:");
+        sortedIncreasing.print();
 
-        MyListDataSet descList = dsList.sortDecreasing();
-        pw.println("Sắp xếp giảm dần: " + descList.myDataSetToString());
+        MyListDataSet sortedDecreasing = dataSet.sortDecreasing();
+        System.out.println("Sorted Decreasing:");
+        sortedDecreasing.print();
 
-        // 4. In ra phân số tối giản
-        MyListDataSet simplifiedOriginal = dsList.toSimplify();
-        pw.println("Phân số tối giản (theo thứ tự gốc): " + simplifiedOriginal.myDataSetToString());
+        MyListDataSet simplified = dataSet.toSimplify();
+        System.out.println("Simplified DataSet:");
+        simplified.print();
 
-        MyListDataSet simplifiedAsc = simplifiedOriginal.sortIncreasing();
-        pw.println("Phân số tối giản sắp xếp tăng dần: " + simplifiedAsc.myDataSetToString());
+        MyListDataSet simplifiedIncreasing = simplified.sortIncreasing();
+        System.out.println("Simplified Sorted Increasing:");
+        simplifiedIncreasing.print();
 
-        MyListDataSet simplifiedDesc = simplifiedOriginal.sortDecreasing();
-        pw.println("Phân số tối giản sắp xếp giảm dần: " + simplifiedDesc.myDataSetToString());
+        MyListDataSet simplifiedDecreasing = simplified.sortDecreasing();
+        System.out.println("Simplified Sorted Decreasing:");
+        simplifiedDecreasing.print();
     }
 }
-
-

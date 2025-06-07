@@ -1,9 +1,7 @@
 package hus.oop.final_2024_2025_vector_fraction_statistics_de1.fraction;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.ArrayList;
 
 public class MyListDataSet implements MyDataSet {
     private List<MyFraction> fractions;
@@ -12,7 +10,7 @@ public class MyListDataSet implements MyDataSet {
      * Hàm dựng khởi tạo list chứa các phân số.
      */
     public MyListDataSet() {
-        this.fractions = new ArrayList<>();
+        fractions = new ArrayList<>();
     }
 
     /**
@@ -20,11 +18,7 @@ public class MyListDataSet implements MyDataSet {
      * @param fractions
      */
     public MyListDataSet(List<MyFraction> fractions) {
-        // Tạo mới để tránh chỉnh sửa list bên ngoài
-        this.fractions = new ArrayList<>();
-        for (MyFraction f : fractions) {
-            this.fractions.add(new MyFraction(f));
-        }
+        this.fractions = new ArrayList<>(fractions);
     }
 
     @Override
@@ -32,62 +26,58 @@ public class MyListDataSet implements MyDataSet {
         if (index < 0 || index > fractions.size()) {
             return false;
         }
-        fractions.add(index, new MyFraction(fraction));
+        fractions.add(index, fraction);
         return true;
     }
 
     @Override
     public boolean append(MyFraction fraction) {
-        fractions.add(new MyFraction(fraction));
+        fractions.add(fraction);
         return true;
     }
 
     @Override
     public MyListDataSet toSimplify() {
         List<MyFraction> simplified = new ArrayList<>();
-        for (MyFraction f : fractions) {
-            MyFraction tmp = new MyFraction(f);
-            tmp.simplify();
-            simplified.add(tmp);
+        for (MyFraction frac : fractions) {
+            MyFraction copy = new MyFraction(frac);
+            copy.simplify();
+            simplified.add(copy);
         }
         return new MyListDataSet(simplified);
     }
 
-    @Override
     public MyListDataSet sortIncreasing() {
-        List<MyFraction> copyList = new ArrayList<>();
-        for (MyFraction f : fractions) {
-            copyList.add(new MyFraction(f));
-        }
-        // Sử dụng Collections.sort với Comparator lấy từ compareTo
-        Collections.sort(copyList, new Comparator<MyFraction>() {
-            @Override
-            public int compare(MyFraction o1, MyFraction o2) {
-                return o1.compareTo(o2);
+        List<MyFraction> sorted = new ArrayList<>(fractions);
+        for (int i = 0; i < sorted.size() - 1; i++) {
+            for (int j = i + 1; j < sorted.size(); j++) {
+                if (sorted.get(i).compareTo(sorted.get(j)) > 0) {
+                    MyFraction temp = sorted.get(i);
+                    sorted.set(i, sorted.get(j));
+                    sorted.set(j, temp);
+                }
             }
-        });
-        return new MyListDataSet(copyList);
+        }
+        return new MyListDataSet(sorted);
     }
 
-    @Override
     public MyListDataSet sortDecreasing() {
-        List<MyFraction> copyList = new ArrayList<>();
-        for (MyFraction f : fractions) {
-            copyList.add(new MyFraction(f));
-        }
-        Collections.sort(copyList, new Comparator<MyFraction>() {
-            @Override
-            public int compare(MyFraction o1, MyFraction o2) {
-                return -o1.compareTo(o2);
+        List<MyFraction> sorted = new ArrayList<>(fractions);
+        for (int i = 0; i < sorted.size() - 1; i++) {
+            for (int j = i + 1; j < sorted.size(); j++) {
+                if (sorted.get(i).compareTo(sorted.get(j)) < 0) {
+                    MyFraction temp = sorted.get(i);
+                    sorted.set(i, sorted.get(j));
+                    sorted.set(j, temp);
+                }
             }
-        });
-        return new MyListDataSet(copyList);
+        }
+        return new MyListDataSet(sorted);
     }
 
     @Override
     public String myDataSetToString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < fractions.size(); i++) {
             sb.append(fractions.get(i).toString());
             if (i < fractions.size() - 1) {
@@ -103,5 +93,3 @@ public class MyListDataSet implements MyDataSet {
         System.out.println(myDataSetToString());
     }
 }
-
-

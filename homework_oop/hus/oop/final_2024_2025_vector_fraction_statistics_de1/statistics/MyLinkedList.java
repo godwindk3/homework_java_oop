@@ -1,6 +1,5 @@
 package hus.oop.final_2024_2025_vector_fraction_statistics_de1.statistics;
 
-import java.util.Arrays;
 
 public class MyLinkedList extends MyAbstractList {
     private MyNode top;
@@ -9,16 +8,16 @@ public class MyLinkedList extends MyAbstractList {
      * Khởi tạo dữ liệu mặc định.
      */
     public MyLinkedList() {
-        this.top = null;
+        top = null;
     }
 
     @Override
     public int size() {
         int count = 0;
-        MyNode curr = top;
-        while (curr != null) {
+        MyNode current = top;
+        while (current != null) {
             count++;
-            curr = curr.next;
+            current = current.next;
         }
         return count;
     }
@@ -29,103 +28,96 @@ public class MyLinkedList extends MyAbstractList {
         if (top == null) {
             top = newNode;
         } else {
-            MyNode curr = top;
-            while (curr.next != null) {
-                curr = curr.next;
+            MyNode current = top;
+            while (current.next != null) {
+                current = current.next;
             }
-            curr.next = newNode;
-            newNode.previous = curr;
+            current.next = newNode;
+            newNode.previous = current;
         }
     }
 
     @Override
     public void insert(double data, int index) {
-        int n = size();
-        if (index < 0 || index > n) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+        if (index < 0 || index > size()) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
         MyNode newNode = new MyNode(data);
         if (index == 0) {
-            // chèn trước top
             newNode.next = top;
             if (top != null) {
                 top.previous = newNode;
             }
             top = newNode;
-        } else if (index == n) {
-            // chèn ở cuối
-            MyNode curr = top;
-            while (curr.next != null) {
-                curr = curr.next;
-            }
-            curr.next = newNode;
-            newNode.previous = curr;
         } else {
-            MyNode curr = getNodeByIndex(index);
-            MyNode prev = curr.previous;
-            prev.next = newNode;
-            newNode.previous = prev;
-            newNode.next = curr;
-            curr.previous = newNode;
+            MyNode current = getNodeByIndex(index - 1);
+            newNode.next = current.next;
+            newNode.previous = current;
+            if (current.next != null) {
+                current.next.previous = newNode;
+            }
+            current.next = newNode;
         }
     }
 
     @Override
     public void remove(int index) {
-        int n = size();
-        if (index < 0 || index >= n) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
-        MyNode curr = getNodeByIndex(index);
-        MyNode prev = curr.previous;
-        MyNode next = curr.next;
-        if (prev != null) {
-            prev.next = next;
+        if (index == 0) {
+            top = top.next;
+            if (top != null) {
+                top.previous = null;
+            }
         } else {
-            top = next;
-        }
-        if (next != null) {
-            next.previous = prev;
+            MyNode current = getNodeByIndex(index);
+            current.previous.next = current.next;
+            if (current.next != null) {
+                current.next.previous = current.previous;
+            }
         }
     }
 
     @Override
     public MyLinkedList sortIncreasing() {
-        int n = size();
-        if (n == 0) {
-            return new MyLinkedList();
-        }
-        double[] arr = new double[n];
-        MyNode curr = top;
-        int idx = 0;
-        while (curr != null) {
-            arr[idx++] = curr.data;
-            curr = curr.next;
-        }
-        Arrays.sort(arr);
         MyLinkedList sorted = new MyLinkedList();
-        for (double v : arr) {
-            sorted.add(v);
+        MyNode current = top;
+        while (current != null) {
+            sorted.add(current.data);
+            current = current.next;
+        }
+        for (int i = 0; i < sorted.size() - 1; i++) {
+            MyNode nodeI = sorted.getNodeByIndex(i);
+            for (int j = i + 1; j < sorted.size(); j++) {
+                MyNode nodeJ = sorted.getNodeByIndex(j);
+                if (nodeI.data > nodeJ.data) {
+                    double temp = nodeI.data;
+                    nodeI.data = nodeJ.data;
+                    nodeJ.data = temp;
+                }
+            }
         }
         return sorted;
     }
 
     @Override
     public int binarySearch(double data) {
-        int n = size();
-        if (n == 0) {
-            return -1;
+        MyLinkedList sorted = sortIncreasing();
+        int left = 0;
+        int right = sorted.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            MyNode midNode = sorted.getNodeByIndex(mid);
+            if (midNode.data == data) {
+                return mid;
+            } else if (midNode.data < data) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
         }
-        double[] arr = new double[n];
-        MyNode curr = top;
-        int idx = 0;
-        while (curr != null) {
-            arr[idx++] = curr.data;
-            curr = curr.next;
-        }
-        Arrays.sort(arr);
-        int pos = Arrays.binarySearch(arr, data);
-        return (pos < 0 ? -1 : pos);
+        return -1;
     }
 
     /**
@@ -134,10 +126,6 @@ public class MyLinkedList extends MyAbstractList {
      */
     @Override
     public MyIterator iterator(int start) {
-        int n = size();
-        if (start < 0 || start > n) {
-            throw new IndexOutOfBoundsException("Iterator start " + start + " out of bounds");
-        }
         return new MyLinkedListIterator(start);
     }
 
@@ -147,54 +135,58 @@ public class MyLinkedList extends MyAbstractList {
      * @return
      */
     private MyNode getNodeByIndex(int index) {
-        int n = size();
-        if (index < 0 || index >= n) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
-        MyNode curr = top;
-        int count = 0;
-        while (count < index) {
-            curr = curr.next;
-            count++;
+        MyNode current = top;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
         }
-        return curr;
+        return current;
     }
 
     private class MyLinkedListIterator implements MyIterator {
+        /*
+         * Vị trí hiện tại của iterator trong list.
+         */
         private int currentPosition;
-        private int lastReturned;
+        private MyNode currentNode;
 
+        /**
+         * Khởi tạo cho iterator ở vị trí position trong MyLinkedList.
+         * @param position
+         */
         public MyLinkedListIterator(int position) {
-            this.currentPosition = position;
-            this.lastReturned = -1;
+            if (position < 0 || position > size()) {
+                throw new IndexOutOfBoundsException("Invalid starting position: " + position);
+            }
+            currentPosition = position;
+            currentNode = getNodeByIndex(position);
         }
 
         @Override
         public boolean hasNext() {
-            return currentPosition < MyLinkedList.this.size();
+            return currentNode != null;
         }
 
         @Override
         public Number next() {
             if (!hasNext()) {
-                throw new IllegalStateException("No more elements");
+                throw new IndexOutOfBoundsException("No more elements");
             }
-            MyNode node = getNodeByIndex(currentPosition);
-            lastReturned = currentPosition;
+            double value = currentNode.data;
+            currentNode = currentNode.next;
             currentPosition++;
-            return Double.valueOf(node.data);
+            return value;
         }
 
         @Override
         public void remove() {
-            if (lastReturned < 0) {
-                throw new IllegalStateException("next() chưa được gọi hoặc đã remove rồi");
+            if (currentPosition <= 0) {
+                throw new IllegalStateException("Cannot remove before first element");
             }
-            MyLinkedList.this.remove(lastReturned);
-            if (lastReturned < currentPosition) {
-                currentPosition--;
-            }
-            lastReturned = -1;
+            MyLinkedList.this.remove(currentPosition - 1);
+            currentPosition--;
         }
     }
 }

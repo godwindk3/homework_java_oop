@@ -1,7 +1,6 @@
 package hus.oop.final_2024_2025_vector_fraction_statistics_de1.statistics;
 
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+
 import java.util.Random;
 
 public class TestStatistics {
@@ -12,140 +11,70 @@ public class TestStatistics {
     }
 
     public static void main(String[] args) {
-        // Thay "TEN_SINH_VIEN" và "MA_SINH_VIEN" bằng thông tin của bạn
-        String TEN_SINH_VIEN = "NguyenVanA";
-        String MA_SINH_VIEN = "123456";
-        String fileName = TEN_SINH_VIEN + "_" + MA_SINH_VIEN + "_Statistics.txt";
+        TestStatistics testArray = new TestStatistics(new Statistics(new MyArrayList()));
+        testArray.testMyArrayList();
 
-        try {
-            // Lưu lại standard out ban đầu
-            PrintStream originalOut = System.out;
-            // Mở file để ghi
-            FileOutputStream fos = new FileOutputStream(fileName);
-            PrintStream fileOut = new PrintStream(fos);
-            // Đổi System.out về fileOut
-            System.setOut(fileOut);
+        TestStatistics testLinked = new TestStatistics(new Statistics(new MyLinkedList()));
+        testLinked.testMyLinkedList();
 
-            // Thực hiện test cho MyArrayList
-            System.out.println("=== TEST MyArrayList ===");
-            TestStatistics testerArray = new TestStatistics(new Statistics(new MyArrayList()));
-            testerArray.testMyArrayList();
-
-            System.out.println();
-            // Thực hiện test cho MyLinkedList
-            System.out.println("=== TEST MyLinkedList ===");
-            TestStatistics testerLinked = new TestStatistics(new Statistics(new MyLinkedList()));
-            testerLinked.testMyLinkedList();
-
-            // Khôi phục System.out
-            System.setOut(originalOut);
-            fileOut.close();
-            fos.close();
-            System.out.println("Đã ghi kết quả vào file: " + fileName);
-        } catch (Exception e) {
-            System.err.println("Lỗi khi ghi file: " + e.getMessage());
-        }
+        /* TODO
+           - Thực hiện từng hàm test, lưu kết quả chạy chương trình và file text được đặt tên
+             là <TenSinhVien_MaSinhVien_Statistics>.txt (Ví dụ, NguyenVanA_123456_Statistics.txt).
+           - Nén các file source code và file text kết quả chạy chương trình vào file zip có tên
+             <TenSinhVien_MaSinhVien_Statistics>.zip (Ví dụ, NguyenVanA_123456_Statistics.zip),
+             nộp lên classroom.
+         */
     }
 
     public void testMyArrayList() {
-        Random rnd = new Random();
-        int length = rnd.nextInt(21) + 30; // trong [30,50]
-        System.out.println("Số lượng phần tử (ngẫu nhiên): " + length);
-
-        // Tạo MyArrayList và điền dữ liệu ngẫu nhiên trong [1,20]
-        MyArrayList arr = new MyArrayList();
+        Random rand = new Random();
+        int length = 30 + rand.nextInt(21); // Sinh ngẫu nhiên từ 30 đến 50
+        MyArrayList list = new MyArrayList();
         for (int i = 0; i < length; i++) {
-            double v = 1.0 + rnd.nextDouble() * 19.0;
-            arr.add(v);
+            list.add(1 + rand.nextDouble() * 19); // Sinh ngẫu nhiên từ 1 đến 20
         }
+        Statistics stats = new Statistics(list);
 
-        // Lưu vào Statistics
-        this.statistics = new Statistics(arr);
-
-        // In ra tập dữ liệu gốc
-        System.out.println("Tập dữ liệu gốc (MyArrayList): " + arr.toString());
-
-        // Sử dụng sortIncreasing()
-        MyList sorted = arr.sortIncreasing();
-        System.out.println("Tập dữ liệu đã sắp xếp (tăng dần): " + sorted.toString());
-
-        // Tính max, min, mean, variance
-        double max = this.statistics.max();
-        double min = this.statistics.min();
-        double mean = this.statistics.mean();
-        double var = this.statistics.variance();
-        System.out.println("Max = " + max);
-        System.out.println("Min = " + min);
-        System.out.println("Mean = " + mean);
-        System.out.println("Variance = " + var);
-
-        // Tính rank
-        double[] ranks = this.statistics.rank();
-        System.out.print("Rank (theo thứ tự gốc): [");
-        for (int i = 0; i < ranks.length; i++) {
-            System.out.print(ranks[i]);
-            if (i < ranks.length - 1) {
-                System.out.print(" ");
-            }
+        System.out.println("Dữ liệu gốc: " + list.toString());
+        MyList sorted = list.sortIncreasing();
+        System.out.println("Dữ liệu sắp xếp: " + sorted.toString());
+        System.out.println("Max: " + stats.max());
+        System.out.println("Min: " + stats.min());
+        System.out.println("Kỳ vọng: " + stats.mean());
+        System.out.println("Phương sai: " + stats.variance());
+        double searchValue = list.iterator(0).next().doubleValue();
+        System.out.println("Tìm kiếm " + searchValue + ": " + stats.search(searchValue));
+        double[] ranks = stats.rank();
+        System.out.print("Rank: [");
+        for (double r : ranks) {
+            System.out.print(r + " ");
         }
         System.out.println("]");
-
-        // Thử search một phần tử: dùng phần tử đầu tiên làm ví dụ
-        if (arr.size() > 0) {
-            double key = arr.iterator(0).next().doubleValue();
-            int idx = this.statistics.search(key);
-            System.out.println("Search giá trị \"" + key + "\" trả về index = " + idx);
-        }
     }
 
     public void testMyLinkedList() {
-        Random rnd = new Random();
-        int length = rnd.nextInt(21) + 30; // trong [30,50]
-        System.out.println("Số lượng phần tử (ngẫu nhiên): " + length);
-
-        // Tạo MyLinkedList và điền dữ liệu ngẫu nhiên trong [1,20]
+        Random rand = new Random();
+        int length = 30 + rand.nextInt(21); // Sinh ngẫu nhiên từ 30 đến 50
         MyLinkedList list = new MyLinkedList();
         for (int i = 0; i < length; i++) {
-            double v = 1.0 + rnd.nextDouble() * 19.0;
-            list.add(v);
+            list.add(1 + rand.nextDouble() * 19); // Sinh ngẫu nhiên từ 1 đến 20
         }
+        Statistics stats = new Statistics(list);
 
-        // Lưu vào Statistics
-        this.statistics = new Statistics(list);
-
-        // In ra tập dữ liệu gốc
-        System.out.println("Tập dữ liệu gốc (MyLinkedList): " + list.toString());
-
-        // Sử dụng sortIncreasing()
+        System.out.println("Dữ liệu gốc: " + list.toString());
         MyList sorted = list.sortIncreasing();
-        System.out.println("Tập dữ liệu đã sắp xếp (tăng dần): " + sorted.toString());
-
-        // Tính max, min, mean, variance
-        double max = this.statistics.max();
-        double min = this.statistics.min();
-        double mean = this.statistics.mean();
-        double var = this.statistics.variance();
-        System.out.println("Max = " + max);
-        System.out.println("Min = " + min);
-        System.out.println("Mean = " + mean);
-        System.out.println("Variance = " + var);
-
-        // Tính rank
-        double[] ranks = this.statistics.rank();
-        System.out.print("Rank (theo thứ tự gốc): [");
-        for (int i = 0; i < ranks.length; i++) {
-            System.out.print(ranks[i]);
-            if (i < ranks.length - 1) {
-                System.out.print(" ");
-            }
+        System.out.println("Dữ liệu sắp xếp: " + sorted.toString());
+        System.out.println("Max: " + stats.max());
+        System.out.println("Min: " + stats.min());
+        System.out.println("Kỳ vọng: " + stats.mean());
+        System.out.println("Phương sai: " + stats.variance());
+        double searchValue = list.iterator(0).next().doubleValue();
+        System.out.println("Tìm kiếm " + searchValue + ": " + stats.search(searchValue));
+        double[] ranks = stats.rank();
+        System.out.print("Rank: [");
+        for (double r : ranks) {
+            System.out.print(r + " ");
         }
         System.out.println("]");
-
-        // Thử search một phần tử: dùng phần tử đầu tiên làm ví dụ
-        if (list.size() > 0) {
-            double key = list.iterator(0).next().doubleValue();
-            int idx = this.statistics.search(key);
-            System.out.println("Search giá trị \"" + key + "\" trả về index = " + idx);
-        }
     }
 }

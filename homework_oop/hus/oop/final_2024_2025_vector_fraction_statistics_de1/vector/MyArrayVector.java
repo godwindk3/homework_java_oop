@@ -9,8 +9,8 @@ public class MyArrayVector extends MyAbstractVector {
      * Khởi tạo mặc định cho vector.
      */
     public MyArrayVector() {
-        this.data = new double[DEFAULT_CAPACITY];
-        this.size = 0;
+        data = new double[DEFAULT_CAPACITY];
+        size = 0;
     }
 
     @Override
@@ -21,16 +21,16 @@ public class MyArrayVector extends MyAbstractVector {
     @Override
     public double coordinate(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
         return data[index];
     }
 
     @Override
     public double[] coordinates() {
-        double[] result = new double[size];
-        System.arraycopy(data, 0, result, 0, size);
-        return result;
+        double[] coords = new double[size];
+        System.arraycopy(data, 0, coords, 0, size);
+        return coords;
     }
 
     @Override
@@ -38,21 +38,21 @@ public class MyArrayVector extends MyAbstractVector {
         if (size == data.length) {
             allocateMore();
         }
-        data[size++] = value;
+        data[size] = value;
+        size++;
         return this;
     }
 
     @Override
     public MyArrayVector insert(double value, int index) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
         if (size == data.length) {
             allocateMore();
         }
-        // shift right
-        for (int i = size - 1; i >= index; i--) {
-            data[i + 1] = data[i];
+        for (int i = size; i > index; i--) {
+            data[i] = data[i - 1];
         }
         data[index] = value;
         size++;
@@ -62,9 +62,8 @@ public class MyArrayVector extends MyAbstractVector {
     @Override
     public MyArrayVector remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
-        // shift left
         for (int i = index; i < size - 1; i++) {
             data[i] = data[i + 1];
         }
@@ -74,23 +73,20 @@ public class MyArrayVector extends MyAbstractVector {
 
     @Override
     public MyArrayVector extract(int[] indices) {
-        if (indices == null) {
-            throw new IllegalArgumentException("Indices cannot be null");
-        }
-        MyArrayVector result = new MyArrayVector();
+        MyArrayVector extracted = new MyArrayVector();
         for (int idx : indices) {
             if (idx < 0 || idx >= size) {
-                throw new IndexOutOfBoundsException("Index " + idx + " out of bounds");
+                throw new IndexOutOfBoundsException("Index out of bounds: " + idx);
             }
-            result.insert(data[idx]);
+            extracted.insert(data[idx]);
         }
-        return result;
+        return extracted;
     }
 
     @Override
     public void set(double value, int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
         data[index] = value;
     }
@@ -106,12 +102,12 @@ public class MyArrayVector extends MyAbstractVector {
 
     @Override
     public MyArrayVector add(MyVector another) {
-        if (another == null || another.size() != this.size) {
-            throw new IllegalArgumentException("Vectors must have same dimension");
+        if (this.size() != another.size()) {
+            throw new IllegalArgumentException("Vectors must have the same size");
         }
         MyArrayVector result = new MyArrayVector();
         for (int i = 0; i < size; i++) {
-            result.insert(this.data[i] + another.coordinate(i));
+            result.insert(this.coordinate(i) + another.coordinate(i));
         }
         return result;
     }
@@ -126,8 +122,8 @@ public class MyArrayVector extends MyAbstractVector {
 
     @Override
     public MyArrayVector addTo(MyVector another) {
-        if (another == null || another.size() != this.size) {
-            throw new IllegalArgumentException("Vectors must have same dimension");
+        if (this.size() != another.size()) {
+            throw new IllegalArgumentException("Vectors must have the same size");
         }
         for (int i = 0; i < size; i++) {
             data[i] += another.coordinate(i);
@@ -146,12 +142,12 @@ public class MyArrayVector extends MyAbstractVector {
 
     @Override
     public MyArrayVector minus(MyVector another) {
-        if (another == null || another.size() != this.size) {
-            throw new IllegalArgumentException("Vectors must have same dimension");
+        if (this.size() != another.size()) {
+            throw new IllegalArgumentException("Vectors must have the same size");
         }
         MyArrayVector result = new MyArrayVector();
         for (int i = 0; i < size; i++) {
-            result.insert(this.data[i] - another.coordinate(i));
+            result.insert(this.coordinate(i) - another.coordinate(i));
         }
         return result;
     }
@@ -159,40 +155,41 @@ public class MyArrayVector extends MyAbstractVector {
     @Override
     public MyArrayVector minusFrom(double value) {
         for (int i = 0; i < size; i++) {
-            data[i] -= value;
+            data[i] = value - data[i];
         }
         return this;
     }
 
     @Override
     public MyArrayVector minusFrom(MyVector another) {
-        if (another == null || another.size() != this.size) {
-            throw new IllegalArgumentException("Vectors must have same dimension");
+        if (this.size() != another.size()) {
+            throw new IllegalArgumentException("Vectors must have the same size");
         }
         for (int i = 0; i < size; i++) {
-            data[i] -= another.coordinate(i);
+            data[i] = another.coordinate(i) - data[i];
         }
         return this;
     }
 
     @Override
     public double dot(MyVector another) {
-        if (another == null || another.size() != this.size) {
-            throw new IllegalArgumentException("Vectors must have same dimension");
+        if (this.size() != another.size()) {
+            throw new IllegalArgumentException("Vectors must have the same size");
         }
-        double sum = 0.0;
+        double result = 0;
         for (int i = 0; i < size; i++) {
-            sum += this.data[i] * another.coordinate(i);
+            result += this.coordinate(i) * another.coordinate(i);
         }
-        return sum;
+        return result;
     }
 
     @Override
     public MyArrayVector pow(double power) {
+        MyArrayVector result = new MyArrayVector();
         for (int i = 0; i < size; i++) {
-            data[i] = Math.pow(data[i], power);
+            result.insert(Math.pow(data[i], power));
         }
-        return this;
+        return result;
     }
 
     @Override
@@ -205,20 +202,19 @@ public class MyArrayVector extends MyAbstractVector {
 
     @Override
     public double norm() {
-        double sumSq = 0.0;
+        double sum = 0;
         for (int i = 0; i < size; i++) {
-            sumSq += data[i] * data[i];
+            sum += data[i] * data[i];
         }
-        return Math.sqrt(sumSq);
+        return Math.sqrt(sum);
     }
 
     /**
      * Mở rộng kích thước vector lên gấp đôi khi cần thiết.
      */
     private void allocateMore() {
-        int newCapacity = data.length * 2;
-        double[] newArr = new double[newCapacity];
-        System.arraycopy(data, 0, newArr, 0, size);
-        data = newArr;
+        double[] newData = new double[data.length * 2];
+        System.arraycopy(data, 0, newData, 0, size);
+        data = newData;
     }
 }

@@ -18,13 +18,11 @@ public class MyFraction implements MyFractionComparable {
      * @param denominator
      */
     public MyFraction(int numerator, int denominator) {
-        // Nếu người dùng truyền denominator là 0, ta có thể ném ngoại lệ IllegalArgumentException
         if (denominator == 0) {
-            throw new IllegalArgumentException("Mẫu số không thể là 0");
+            throw new IllegalArgumentException("Denominator cannot be zero.");
         }
         this.numerator = numerator;
         this.denominator = denominator;
-        // Không tự động rút gọn ở đây, để rút gọn khi cần thiết hoặc do người dùng yêu cầu
     }
 
     /**
@@ -50,7 +48,7 @@ public class MyFraction implements MyFractionComparable {
 
     public void setDenominator(int denominator) {
         if (denominator == 0) {
-            throw new IllegalArgumentException("Mẫu số không thể là 0");
+            throw new IllegalArgumentException("Denominator cannot be zero.");
         }
         this.denominator = denominator;
     }
@@ -60,7 +58,7 @@ public class MyFraction implements MyFractionComparable {
      * @return
      */
     public byte byteValue() {
-        return (byte) doubleValue();
+        return (byte) (numerator / denominator);
     }
 
     /**
@@ -68,7 +66,7 @@ public class MyFraction implements MyFractionComparable {
      * @return
      */
     public int intValue() {
-        return (int) doubleValue();
+        return numerator / denominator;
     }
 
     /**
@@ -76,7 +74,7 @@ public class MyFraction implements MyFractionComparable {
      * @return
      */
     public long longValue() {
-        return (long) doubleValue();
+        return numerator / denominator;
     }
 
     /**
@@ -84,7 +82,7 @@ public class MyFraction implements MyFractionComparable {
      * @return
      */
     public short shortValue() {
-        return (short) doubleValue();
+        return (short) (numerator / denominator);
     }
 
     /**
@@ -110,13 +108,10 @@ public class MyFraction implements MyFractionComparable {
     private int gcd() {
         int a = Math.abs(numerator);
         int b = Math.abs(denominator);
-        if (b == 0) {
-            return a;
-        }
         while (b != 0) {
-            int t = a % b;
-            a = b;
-            b = t;
+            int temp = b;
+            b = a % b;
+            a = temp;
         }
         return a;
     }
@@ -126,30 +121,25 @@ public class MyFraction implements MyFractionComparable {
      */
     public void simplify() {
         int gcd = gcd();
-        if (gcd != 0) {
-            numerator /= gcd;
-            denominator /= gcd;
-            // Giữ quy tắc: mẫu số luôn dương
-            if (denominator < 0) {
-                denominator = -denominator;
-                numerator = -numerator;
-            }
+        numerator /= gcd;
+        denominator /= gcd;
+        if (denominator < 0) {
+            numerator = -numerator;
+            denominator = -denominator;
         }
     }
 
     @Override
     public int compareTo(MyFraction another) {
-        // So sánh hai phân số a/b và c/d bằng (a*d) và (c*b)
-        // Tránh lạm phát kiểu: ép kiểu về long nếu cần
-        long lhs = (long) this.numerator * another.denominator;
-        long rhs = (long) another.numerator * this.denominator;
-        if (lhs < rhs) return -1;
-        if (lhs > rhs) return 1;
-        // Nếu bằng, so sánh tiếp theo theo mẫu số tăng dần
-        // (theo yêu cầu: khi giá trị bằng, sắp xếp theo mẫu số tăng dần
-        if (this.denominator < another.denominator) return -1;
-        if (this.denominator > another.denominator) return 1;
-        return 0;
+        double thisValue = this.doubleValue();
+        double anotherValue = another.doubleValue();
+        if (thisValue < anotherValue) {
+            return -1;
+        } else if (thisValue > anotherValue) {
+            return 1;
+        } else {
+            return Integer.compare(this.denominator, another.denominator);
+        }
     }
 
     /**
@@ -161,4 +151,3 @@ public class MyFraction implements MyFractionComparable {
         return numerator + "/" + denominator;
     }
 }
-

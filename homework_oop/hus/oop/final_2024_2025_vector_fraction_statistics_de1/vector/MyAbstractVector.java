@@ -7,12 +7,10 @@ public abstract class MyAbstractVector implements MyVector {
      */
     @Override
     public String toString() {
-        double[] coords = coordinates();
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < coords.length; i++) {
-            sb.append(coords[i]);
-            if (i < coords.length - 1) {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < size(); i++) {
+            sb.append(coordinate(i));
+            if (i < size() - 1) {
                 sb.append(" ");
             }
         }
@@ -28,9 +26,10 @@ public abstract class MyAbstractVector implements MyVector {
      */
     @Override
     public boolean equals(MyVector another) {
-        if (another == null) return false;
-        if (this.size() != another.size()) return false;
-        for (int i = 0; i < this.size(); i++) {
+        if (this.size() != another.size()) {
+            return false;
+        }
+        for (int i = 0; i < size(); i++) {
             if (this.coordinate(i) != another.coordinate(i)) {
                 return false;
             }
@@ -38,4 +37,3 @@ public abstract class MyAbstractVector implements MyVector {
         return true;
     }
 }
-

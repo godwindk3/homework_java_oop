@@ -1,6 +1,5 @@
 package hus.oop.final_2024_2025_vector_fraction_statistics_de1.statistics;
 
-import java.util.Arrays;
 
 public class MyArrayList extends MyAbstractList {
     private static final int DEFAULT_CAPACITY = 16;
@@ -11,8 +10,8 @@ public class MyArrayList extends MyAbstractList {
      * Khởi tạo dữ liệu mặc định.
      */
     public MyArrayList() {
-        this.data = new double[DEFAULT_CAPACITY];
-        this.size = 0;
+        data = new double[DEFAULT_CAPACITY];
+        size = 0;
     }
 
     @Override
@@ -25,20 +24,20 @@ public class MyArrayList extends MyAbstractList {
         if (size == this.data.length) {
             allocateMore();
         }
-        this.data[size++] = data;
+        this.data[size] = data;
+        size++;
     }
 
     @Override
     public void insert(double data, int index) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
         if (size == this.data.length) {
             allocateMore();
         }
-        // shift phải từ cuối về index
-        for (int i = size - 1; i >= index; i--) {
-            this.data[i + 1] = this.data[i];
+        for (int i = size; i > index; i--) {
+            this.data[i] = this.data[i - 1];
         }
         this.data[index] = data;
         size++;
@@ -47,37 +46,50 @@ public class MyArrayList extends MyAbstractList {
     @Override
     public void remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds");
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
-        // shift trái từ index+1 về
         for (int i = index; i < size - 1; i++) {
-            this.data[i] = this.data[i + 1];
+            data[i] = data[i + 1];
         }
         size--;
     }
 
     @Override
     public MyArrayList sortIncreasing() {
-        double[] copy = new double[size];
-        System.arraycopy(this.data, 0, copy, 0, size);
-        Arrays.sort(copy);
         MyArrayList sorted = new MyArrayList();
-        for (double v : copy) {
-            sorted.add(v);
+        double[] temp = new double[size];
+        System.arraycopy(data, 0, temp, 0, size);
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i + 1; j < size; j++) {
+                if (temp[i] > temp[j]) {
+                    double swap = temp[i];
+                    temp[i] = temp[j];
+                    temp[j] = swap;
+                }
+            }
+        }
+        for (double d : temp) {
+            sorted.add(d);
         }
         return sorted;
     }
 
     @Override
     public int binarySearch(double data) {
-        if (size == 0) {
-            return -1;
+        MyArrayList sorted = sortIncreasing();
+        int left = 0;
+        int right = sorted.size - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (sorted.data[mid] == data) {
+                return mid;
+            } else if (sorted.data[mid] < data) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
         }
-        double[] copy = new double[size];
-        System.arraycopy(this.data, 0, copy, 0, size);
-        Arrays.sort(copy);
-        int idx = Arrays.binarySearch(copy, data);
-        return (idx < 0 ? -1 : idx);
+        return -1;
     }
 
     /**
@@ -86,9 +98,6 @@ public class MyArrayList extends MyAbstractList {
      */
     @Override
     public MyIterator iterator(int start) {
-        if (start < 0 || start > size) {
-            throw new IndexOutOfBoundsException("Iterator start " + start + " out of bounds");
-        }
         return new MyArrayListIterator(start);
     }
 
@@ -96,19 +105,25 @@ public class MyArrayList extends MyAbstractList {
      * Cấp phát gấp đôi chỗ cho danh sách khi cần thiết.
      */
     private void allocateMore() {
-        int newCapacity = this.data.length * 2;
-        double[] newArr = new double[newCapacity];
-        System.arraycopy(this.data, 0, newArr, 0, size);
-        this.data = newArr;
+        double[] newData = new double[data.length * 2];
+        System.arraycopy(data, 0, newData, 0, size);
+        data = newData;
     }
 
     private class MyArrayListIterator implements MyIterator {
+        /**
+         * Vị trí hiện tại của iterator trong MyArrayList.
+         */
         private int currentPosition;
-        private int lastReturned;
 
+        /**
+         * Khởi tạo dữ liệu cho iterator tại vị trí position của list.
+         */
         public MyArrayListIterator(int position) {
+            if (position < 0 || position > size) {
+                throw new IndexOutOfBoundsException("Invalid starting position: " + position);
+            }
             this.currentPosition = position;
-            this.lastReturned = -1;
         }
 
         @Override
@@ -119,24 +134,18 @@ public class MyArrayList extends MyAbstractList {
         @Override
         public Number next() {
             if (!hasNext()) {
-                throw new IllegalStateException("No more elements");
+                throw new IndexOutOfBoundsException("No more elements");
             }
-            double val = data[currentPosition];
-            lastReturned = currentPosition;
-            currentPosition++;
-            return Double.valueOf(val);
+            return data[currentPosition++];
         }
 
         @Override
         public void remove() {
-            if (lastReturned < 0) {
-                throw new IllegalStateException("next() chưa được gọi hoặc đã remove rồi");
+            if (currentPosition <= 0) {
+                throw new IllegalStateException("Cannot remove before first element");
             }
-            // Xóa phần tử ở lastReturned
-            MyArrayList.this.remove(lastReturned);
-            // Sau khi xóa, giảm currentPosition để tiếp tục vòng lặp đúng
-            currentPosition = lastReturned;
-            lastReturned = -1;
+            MyArrayList.this.remove(currentPosition - 1);
+            currentPosition--;
         }
     }
 }

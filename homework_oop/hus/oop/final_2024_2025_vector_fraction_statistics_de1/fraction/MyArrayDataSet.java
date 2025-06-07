@@ -9,8 +9,8 @@ public class MyArrayDataSet implements MyDataSet {
      * Hàm dựng khởi tạo mảng chứa các phân số có kích thước là DEFAULT_CAPACITY.
      */
     public MyArrayDataSet() {
-        this.fractions = new MyFraction[DEFAULT_CAPACITY];
-        this.length = 0;
+        fractions = new MyFraction[DEFAULT_CAPACITY];
+        length = 0;
     }
 
     /**
@@ -18,13 +18,7 @@ public class MyArrayDataSet implements MyDataSet {
      * @param fractions
      */
     public MyArrayDataSet(MyFraction[] fractions) {
-        // Tạo mảng đủ chứa dữ liệu
-        this.fractions = new MyFraction[Math.max(DEFAULT_CAPACITY, fractions.length)];
-        // Copy từng phần tử
-        for (int i = 0; i < fractions.length; i++) {
-            // Tạo bản sao để không thay đổi mảng gốc
-            this.fractions[i] = new MyFraction(fractions[i]);
-        }
+        this.fractions = fractions;
         this.length = fractions.length;
     }
 
@@ -40,22 +34,19 @@ public class MyArrayDataSet implements MyDataSet {
         if (!checkBoundaries(index, length)) {
             return false;
         }
-        // Nếu đầy, mở rộng mảng
         if (length == fractions.length) {
             allocateMore();
         }
-        // Dịch chuyển từ cuối xuống index
-        for (int i = length - 1; i >= index; i--) {
-            fractions[i + 1] = fractions[i];
+        for (int i = length; i > index; i--) {
+            fractions[i] = fractions[i - 1];
         }
-        // Chèn vào
-        fractions[index] = new MyFraction(fraction);
+        fractions[index] = fraction;
         length++;
         return true;
     }
 
     /**
-     * Phương thức thêm phân số fraction vào vị trí cuối cùng chưa có dứ liệu của mảng data.
+     * Phương thức thêm phân số fraction vào vị trí cuối cùng chưa có dữ liệu của mảng data.
      * Nếu mảng hết chỗ để thêm dữ liệu, mở rộng kích thước mảng gấp đôi.
      * @param fraction
      * @return true nếu chèn được số vào, false nếu không chèn được số vào.
@@ -65,67 +56,56 @@ public class MyArrayDataSet implements MyDataSet {
         if (length == fractions.length) {
             allocateMore();
         }
-        fractions[length++] = new MyFraction(fraction);
+        fractions[length] = fraction;
+        length++;
         return true;
     }
 
     @Override
     public MyArrayDataSet toSimplify() {
-        // Tạo mảng mới chứa phiên bản tối giản
         MyFraction[] simplified = new MyFraction[length];
         for (int i = 0; i < length; i++) {
-            MyFraction tmp = new MyFraction(fractions[i]);
-            tmp.simplify();
-            simplified[i] = tmp;
+            simplified[i] = new MyFraction(fractions[i]);
+            simplified[i].simplify();
         }
         return new MyArrayDataSet(simplified);
     }
 
     @Override
     public MyArrayDataSet sortIncreasing() {
-        // Sao chép mảng hiện tại
-        MyFraction[] copyArr = new MyFraction[length];
-        for (int i = 0; i < length; i++) {
-            copyArr[i] = new MyFraction(fractions[i]);
-        }
-        // Thực hiện sorting (chọn thuật toán đơn giản: bubble sort) theo tăng dần (compareTo đã xử lý cả khi bằng giá trị thì so mẫu số)
+        MyFraction[] sorted = new MyFraction[length];
+        System.arraycopy(fractions, 0, sorted, 0, length);
         for (int i = 0; i < length - 1; i++) {
-            for (int j = 0; j < length - 1 - i; j++) {
-                if (copyArr[j].compareTo(copyArr[j + 1]) > 0) {
-                    MyFraction tmp = copyArr[j];
-                    copyArr[j] = copyArr[j + 1];
-                    copyArr[j + 1] = tmp;
+            for (int j = i + 1; j < length; j++) {
+                if (sorted[i].compareTo(sorted[j]) > 0) {
+                    MyFraction temp = sorted[i];
+                    sorted[i] = sorted[j];
+                    sorted[j] = temp;
                 }
             }
         }
-        return new MyArrayDataSet(copyArr);
+        return new MyArrayDataSet(sorted);
     }
 
     @Override
     public MyArrayDataSet sortDecreasing() {
-        // Sao chép mảng hiện tại
-        MyFraction[] copyArr = new MyFraction[length];
-        for (int i = 0; i < length; i++) {
-            copyArr[i] = new MyFraction(fractions[i]);
-        }
-        // Thực hiện sorting giảm dần: đảo ngược compareTo, và khi bằng giá trị, compare mẫu số giảm dần
+        MyFraction[] sorted = new MyFraction[length];
+        System.arraycopy(fractions, 0, sorted, 0, length);
         for (int i = 0; i < length - 1; i++) {
-            for (int j = 0; j < length - 1 - i; j++) {
-                // Nếu j < j+1 trong compareTo thì ta nên đổi để thành giảm dần
-                if (copyArr[j].compareTo(copyArr[j + 1]) < 0) {
-                    MyFraction tmp = copyArr[j];
-                    copyArr[j] = copyArr[j + 1];
-                    copyArr[j + 1] = tmp;
+            for (int j = i + 1; j < length; j++) {
+                if (sorted[i].compareTo(sorted[j]) < 0) {
+                    MyFraction temp = sorted[i];
+                    sorted[i] = sorted[j];
+                    sorted[j] = temp;
                 }
             }
         }
-        return new MyArrayDataSet(copyArr);
+        return new MyArrayDataSet(sorted);
     }
 
     @Override
     public String myDataSetToString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < length; i++) {
             sb.append(fractions[i].toString());
             if (i < length - 1) {
@@ -146,12 +126,9 @@ public class MyArrayDataSet implements MyDataSet {
      * gấp đôi, sau đó copy dữ liệu từ mảng cũ vào.
      */
     private void allocateMore() {
-        int newCapacity = fractions.length * 2;
-        MyFraction[] newArr = new MyFraction[newCapacity];
-        for (int i = 0; i < length; i++) {
-            newArr[i] = fractions[i];
-        }
-        fractions = newArr;
+        MyFraction[] newFractions = new MyFraction[fractions.length * 2];
+        System.arraycopy(fractions, 0, newFractions, 0, length);
+        fractions = newFractions;
     }
 
     /**
@@ -164,4 +141,3 @@ public class MyArrayDataSet implements MyDataSet {
         return index >= 0 && index <= upperBound;
     }
 }
-

@@ -1,6 +1,6 @@
 package hus.oop.final_2024_2025_vector_fraction_statistics_de1.statistics;
 
-import java.util.Arrays;
+
 
 public class Statistics {
     private MyList data;
@@ -17,16 +17,15 @@ public class Statistics {
      * @return giá trị lớn nhất.
      */
     public double max() {
-        int n = data.size();
-        if (n == 0) {
-            throw new IllegalStateException("Dữ liệu rỗng");
+        if (data.size() == 0) {
+            throw new IllegalStateException("List is empty");
         }
-        MyIterator it = data.iterator(0);
-        double max = it.next().doubleValue();
-        while (it.hasNext()) {
-            double v = it.next().doubleValue();
-            if (v > max) {
-                max = v;
+        double max = Double.NEGATIVE_INFINITY;
+        MyIterator iterator = data.iterator(0);
+        while (iterator.hasNext()) {
+            double value = iterator.next().doubleValue();
+            if (value > max) {
+                max = value;
             }
         }
         return max;
@@ -37,36 +36,36 @@ public class Statistics {
      * @return giá trị nhỏ nhất.
      */
     public double min() {
-        int n = data.size();
-        if (n == 0) {
-            throw new IllegalStateException("Dữ liệu rỗng");
+        if (data.size() == 0) {
+            throw new IllegalStateException("List is empty");
         }
-        MyIterator it = data.iterator(0);
-        double min = it.next().doubleValue();
-        while (it.hasNext()) {
-            double v = it.next().doubleValue();
-            if (v < min) {
-                min = v;
+        double min = Double.POSITIVE_INFINITY;
+        MyIterator iterator = data.iterator(0);
+        while (iterator.hasNext()) {
+            double value = iterator.next().doubleValue();
+            if (value < min) {
+                min = value;
             }
         }
         return min;
     }
+
+
 
     /**
      * Tính kỳ vọng của mẫu theo dữ liệu trong list.
      * @return kỳ vọng.
      */
     public double mean() {
-        int n = data.size();
-        if (n == 0) {
-            throw new IllegalStateException("Dữ liệu rỗng");
+        if (data.size() == 0) {
+            throw new IllegalStateException("List is empty");
         }
-        double sum = 0.0;
-        MyIterator it = data.iterator(0);
-        while (it.hasNext()) {
-            sum += it.next().doubleValue();
+        double sum = 0;
+        MyIterator iterator = data.iterator(0);
+        while (iterator.hasNext()) {
+            sum += iterator.next().doubleValue();
         }
-        return sum / n;
+        return sum / data.size();
     }
 
     /**
@@ -74,23 +73,21 @@ public class Statistics {
      * @return phương sai.
      */
     public double variance() {
-        int n = data.size();
-        if (n < 2) {
-            return 0.0;
+        if (data.size() == 0) {
+            throw new IllegalStateException("List is empty");
         }
-        double mu = mean();
-        double sumSq = 0.0;
-        MyIterator it = data.iterator(0);
-        while (it.hasNext()) {
-            double v = it.next().doubleValue();
-            sumSq += (v - mu) * (v - mu);
+        double mean = mean();
+        double sum = 0;
+        MyIterator iterator = data.iterator(0);
+        while (iterator.hasNext()) {
+            double value = iterator.next().doubleValue();
+            sum += (value - mean) * (value - mean);
         }
-        // Phương sai mẫu: chia cho (n - 1)
-        return sumSq / (n - 1);
+        return sum / data.size();
     }
 
     /**
-     * Tìm kiếm trong list có phần tử nào có giá trị bằng data không, sử dụng binarySearch trong list.
+     * Tìm kiếm trong list có phẩn tử nào có giá trị bằng data không, sử dụng binarySearch trong list.
      * Trả về index một phần tử có giá trị bằng data, nếu không tìm thấy thì trả về -1.
      * @return
      */
@@ -103,35 +100,18 @@ public class Statistics {
      * @return rank của các phần tử trong list
      */
     public double[] rank() {
-        int n = data.size();
-        if (n == 0) {
-            return new double[0];
-        }
-        double[] original = new double[n];
-        int idx = 0;
-        MyIterator it = data.iterator(0);
-        while (it.hasNext()) {
-            original[idx++] = it.next().doubleValue();
-        }
-        double[] sorted = Arrays.copyOf(original, n);
-        Arrays.sort(sorted);
-        double[] ranks = new double[n];
-        // Nếu có giá trị trùng, rank = vị trí trung bình của các chỉ số trong mảng đã sắp
-        for (int i = 0; i < n; i++) {
-            double val = original[i];
-            // tìm first và last index trong sorted[]
-            int first = -1, last = -1;
-            for (int j = 0; j < n; j++) {
-                if (sorted[j] == val) {
-                    if (first < 0) {
-                        first = j;
-                    }
-                    last = j;
+        MyList sorted = data.sortIncreasing();
+        double[] ranks = new double[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            MyIterator iterator = data.iterator(0);
+            double value = 0;
+            while (iterator.hasNext()) {
+                value = iterator.next().doubleValue();
+                if (value == sorted.iterator(0).next().doubleValue()) {
+                    break;
                 }
             }
-            // vị trí trong sorted mảng là [first..last], rank trung bình = (first + last)/2 + 1
-            double r = ((first + last) / 2.0) + 1.0;
-            ranks[i] = r;
+            ranks[i] = i + 1;
         }
         return ranks;
     }
