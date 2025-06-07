@@ -48,7 +48,7 @@ public class App {
     }
 
     public static void init() {
-        String filePath = "C:\\Users\\ASUS\\OneDrive\\Máy tính\\Java-OOP\\homework_oop\\hus\\oop\\final_2023_2024_rootsolver_search_mybookmanager_de1\\data\\books.csv";
+        String filePath = "homework_oop\\hus\\oop\\final_2023_2024_rootsolver_search_mybookmanager_de1\\data\\books.csv";
         readListData(filePath);
     }
 
